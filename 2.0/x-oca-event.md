@@ -4,8 +4,8 @@ Since STIX was originally created for threat intelligence and not for SIEM or ED
 Take an endpoint file create event as an example - the observed data would include the process and file details - but you would be missing the context
 to underdstand what happened between these two - did the process create or delete or write to the file?
 Another example is a cross process event. You would have details of two processes - but you wouldnt know which process performed the cross process event on the other.
-
-The definition was inspired by the elastic ecs event object.
+The `x-oca-event` object adds this context. What action was performed, Where was it performed, what was the outcome and what are the references to other SCO's that this event relates to.
+Use of references helps to hint the relevance of the data. For example an file create event should have the `x-oca-event.file_ref` pointing to the created file. This would help the observer undersdtand, since a typical observed data SDO would contain more than one `file` SCO.
 
 | property name | type | description |
 |--|--|--|
@@ -40,28 +40,237 @@ The definition was inspired by the elastic ecs event object.
 | duration | `string` | The duration of the event. |
 | dataset | `string` | The dataset of the event. |
 
-In addition this object may contain any field defined in the elastic ecs event definition, but string values are not obligated to be following any schema and may differ between elastic and qradar data sources.
+## Examples
 
-Example (references omitted for simplicity):
+### an event indicating a network communication from an endpoint
 
-    {
-        "type": "x-oca-event",
-        "action": "Process Create",
-        "outcome": "Process Creation Success",
-        "host_ref": "3",
-        "created": "1970-01-18T17:19:29.112Z",
-        "provider": "Microsoft Windows Security Event Log",
-        "url_ref": "8",
-        "file_ref": "9",
-        "process_ref": "13",
-        "parent_process_ref": "16",
-        "category": ["System"],
-        "original_ref": "17",
-        "agent": "WindowsAuthServer@XXXX",
-        "user_ref": "18",
-        "domain_ref": "19",
-        "registry_ref": "20"
+network communication from the host `host1.exmaple.com` to url `https://example.com/download` performed by the `chrome.exe` process.
+
+```
+{
+        "id": "observed-data--7805aca6-b29d-4e1a-86b2-ba4eb1110051",
+        "type": "observed-data",
+        "created_by_ref": "identity--ab920cb1-239b-4371-b7f6-66f634de9927",
+        "created": "2022-07-15T18:42:31.000Z",
+        "modified": "2022-07-15T18:42:31.000Z",
+        "first_observed": "2022-07-15T18:42:31.000Z",
+        "last_observed": "2022-07-15T18:42:31.000Z",
+        "number_observed": 1,
+        "objects":
+        {
+            "0":
+            {
+                "type": "x-oca-event",
+                "action": "Network Connection Created",
+                "created": "2022-07-15T18:42:31.000Z",
+                "host_ref": "1",
+                "provider": "EDR",
+                "original_ref": "4",
+                "user_ref": "5",
+                "process_ref": "8",
+                "network_ref": "10",
+                "url_ref": "11",
+                "domain_ref": "13"
+            },
+            "1":
+            {
+                "type": "x-oca-asset",
+                "ip_refs": ["3"],
+                "hostname": "host1.example.com",
+                "mac_refs": ["2"]
+            },
+            "2":
+            {
+                "type": "mac-addr",
+                "value": "12:34:56:78:9a:bc"
+            },
+            "3":
+            {
+                "type": "ipv4-addr",
+                "value": "192.0.2.0"
+            },
+            "4":
+            {
+                "type": "artifact",
+                "payload_bin": "[original event log data base 64 encoded]"
+            },
+            "5":
+            {
+                "type": "user-account",
+                "user_id": "S-1-2-3-4",
+                "account_login": "joe@example.com"
+            },
+            "6":
+            {
+                "name": "chrome.exe",
+                "type": "file",
+                "hashes":
+                {
+                    "SHA-1": "114c52257780067e3f8bfab4d2706be6debc0ace"
+                },
+                "parent_directory_ref": "7"
+            },
+            "7":
+            {
+                "path": "C:\\Program Files\\Google\\Chrome\\Application",
+                "type": "directory"
+            },
+            "8":
+            {
+                "pid": 14068,
+                "name": "chrome.exe",
+                "type": "process",
+                "created": "2022-07-15T15:41:11.3214492Z",
+                "command_line": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --disable-features --enable-features",
+                "creator_user_ref": "5",
+                "parent_ref": "9",
+                "binary_ref": "6"
+            },
+            "9":
+            {
+                "pid": 7116,
+                "name": "explorer.exe",
+                "type": "process",
+                "created": "2022-07-15T08:01:20.813Z",
+                "creator_user_ref": "5"
+            },
+            "10":
+            {
+                "type": "network-traffic",
+                "src_ref": "3",
+                "dst_ref": "12",
+                "src_port": 2041,
+                "dst_port": 443,
+                "protocols": ["tcp", "https"]
+            },
+            "11":
+            {
+                "type": "url",
+                "value": "https://example.com/download"
+            },
+            "12":
+            {
+                "type": "ipv6-addr",
+                "value": "2001:db8::"
+            },
+            "13":
+            {
+                "type": "domain-name",
+                "value": "example.com"
+            }
+        }
     }
+```
+
+
+### an event indicating a file create from an endpoint
+
+A file `example.exe` has been created on the host `host1.exmaple.com` by the `chrome.exe` process.
+
+```
+{
+        "id": "observed-data--7805aca6-b29d-4e1a-86b2-ba4eb1110046",
+        "type": "observed-data",
+        "created_by_ref": "identity--ab920cb1-239b-4371-b7f6-66f634de9927",
+        "created": "2022-07-15T18:43:10.813Z",
+        "modified": "2022-07-15T18:43:10.813Z",
+        "first_observed": "2022-07-15T18:43:10.813Z",
+        "last_observed": "2022-07-15T18:43:10.813Z",
+        "number_observed": 1,
+        "objects":
+        {
+            "0":
+            {
+                "type": "x-oca-event",
+                "action": "FileCreated",
+                "created": "2022-07-15T18:43:21.3214492Z",
+                "file_ref": "10",
+                "host_ref": "1",
+                "provider": "EDR",
+                "original_ref": "5",
+                "user_ref": "5",
+                "process_ref": "8"
+            },
+            "1":
+            {
+                "type": "x-oca-asset",
+                "ip_refs": ["3"],
+                "hostname": "host1.example.com",
+                "mac_refs": ["2"]
+            },
+            "2":
+            {
+                "type": "mac-addr",
+                "value": "12:34:56:78:9a:bc"
+            },
+            "3":
+            {
+                "type": "ipv4-addr",
+                "value": "192.0.2.0"
+            },
+            "4":
+            {
+                "type": "artifact",
+                "payload_bin": "[original event log data base 64 encoded]"
+            },
+            "5":
+            {
+                "type": "user-account",
+                "user_id": "S-1-2-3-4",
+                "account_login": "joe@example.com"
+            },
+            "6":
+            {
+                "name": "chrome.exe",
+                "type": "file",
+                "hashes":
+                {
+                    "SHA-1": "114c52257780067e3f8bfab4d2706be6debc0ace"
+                },
+                "parent_directory_ref": "7"
+            },
+            "7":
+            {
+                "path": "C:\\Program Files\\Google\\Chrome\\Application",
+                "type": "directory"
+            },
+            "8":
+            {
+                "pid": 14068,
+                "name": "chrome.exe",
+                "type": "process",
+                "created": "2022-07-15T15:41:11.3214492Z",
+                "command_line": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --disable-features --enable-features",
+                "creator_user_ref": "5",
+                "parent_ref": "9",
+                "binary_ref": "6"
+            },
+            "9":
+            {
+                "pid": 7116,
+                "name": "explorer.exe",
+                "type": "process",
+                "created": "2022-07-15T08:01:20.813Z",
+                "creator_user_ref": "5"
+            },
+            "10":
+            {
+                "type": "file",
+                "name": "example.exe",
+                "parent_directory_ref": "11",
+                "hashes":
+                {
+                    "SHA-1": "223c52257780067e3f8bfab4d2706be6debc0aca"
+                }
+            },
+            "11":
+            {
+                "type": "directory",
+                "path": "C:\\Users\\joe\\Downloads"
+            }
+        }
+    }
+```
 
 ## IAM Extension
 

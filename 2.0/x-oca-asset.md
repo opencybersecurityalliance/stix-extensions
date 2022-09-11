@@ -3,7 +3,7 @@ The `x-oca-asset` object describes an asset and its properties.
 It can be referenced to give context on events that took place on this asset.
 It describes the hostname, the associated IP addresses and physical addresses of the asset.
 In SIEM terminology which collects events from many systems - it is used to describe where the events took place.
-It is referenced in the [`x-oca-event`](https://github.ibm.com/RONA/stix-extensions/blob/master/STIX%202.0/x-oca-event.md) object.
+It is referenced in the [`x-oca-event`](./x-oca-event.md) object.
 
 While `x-oca-asset` specifies the host on which the associated event occurred, it may provide extenstions to describe addtional entities of tne runtime environment. In a cloud environment the event may occur within a container that is running or a partcular pod on the host. `x-oca-asset` uses a separate extension for each addtional runtime entity. Please note that as per the STIX [2.0](http://docs.oasis-open.org/cti/stix/v2.0/cs01/part3-cyber-observable-core/stix-v2.0-cs01-part3-cyber-observable-core.html#_Toc496715388)and [2.1](https://docs.oasis-open.org/cti/stix/v2.1/csprd01/stix-v2.1-csprd01.html#_Toc16070830), COOs/SCOs can have any number of extenstions.
 

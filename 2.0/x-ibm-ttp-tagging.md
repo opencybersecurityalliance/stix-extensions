@@ -1,5 +1,5 @@
 ## x-ibm-ttp-tagging object
-The `x-ibm-ttp-tagging` object describes mappings of an `x-ibm-finding` or any other object or event to a TTP (techniues tactics and procedures).
+The `x-ibm-ttp-tagging` object describes mappings of an `x-ibm-finding` or any other object or event to a TTP (techniues tactics and procedures). It may accomodate TTP's from multiple definitions and may include extensions for defining framework specific data, such as the MITRE Att&ck extension.
 
 
 | Property Name | Type | Description |

@@ -1,4 +1,5 @@
 ## x-ibm-finding object
+
 The `x-ibm-finding` object describes a threat, policy, violation, or alert and its associated properties. 
 Where possible, references are made to existing STIX objects (ie. ip addresses, users).
 
