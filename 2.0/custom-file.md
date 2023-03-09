@@ -41,9 +41,8 @@ Example:
             "name": "svchost.exe",
             "parent_directory_ref": "1",
             "hashes": {
-                "SHA-256": "7fd065bac18c5278777ae44908101cdfed72d26fa741367f0ad4d02020787ab6",
-                "SHA-256": "aaaa1111bbbb2222",
-                "MD5": "8a0a29438052faed8a2532da50455756"
+                "SHA-256": "aaaa1111bbbb2222aaaa1111bbbb2222aaaa1111bbbb2222aaaa1111bbbb2222",
+                "MD5": "00001111aaaa00001111aaaa00001111"
             }
         },
         "1": {
