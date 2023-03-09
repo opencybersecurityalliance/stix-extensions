@@ -11,10 +11,10 @@ Specifies custom atributes for the [`file`](http://docs.oasis-open.org/cti/stix/
 | x_unix | `dictionary` | Specifies the list of attributes associated with a unix file as a dictionary. Each dictionary key SHOULD come from the unix file vocabulary.  |
 | x_owner_ref | `object-ref` | Specifies the ownership attributes of a file as a reference to a User Account Object. The object referenced in this property MUST be of type `user-account`. |
 | x_win_drive_letter | `string` | Specifies the drive letter where the file is located on Windows. example C |
-| x_pe | `dictionary` | Specifies the metadata of a portable executable file. Each dictionary key SHOULD come from the pe vocabulary. |
+| x_software_ref | `object-ref` | Specifies the the high level properties of a portable executable file. The object referenced in this property MUST be of type `software`.  |
 | x_code_signature | `dictionary` | Specifies metadata about the file signature. Each dictionary key SHOULD come from the code signature vocabulary. |
 
-Unix file vocabulary
+### Unix file vocabulary
 | value | type | description |
 |--|--|--|
 | device | `string` | Specifies the device that is the source of the file. example: sda |
@@ -23,16 +23,7 @@ Unix file vocabulary
 | inode | `integer` | Specifies the inode representing the file in the filesystem. |
 | mode | `integer` | Specifies the mode of the file in octal representation. |
 
-PE vocabulary
-| value | type | description |
-|--|--|--|
-| company | `string` | Specifies the internal company name of the file, provided at compile-time. example: Microsoft Corporation |
-| description | `string` | Specifies the internal description of the file, provided at compile-time. example: Paint |
-| file_version | `string` | Specifies the internal version of the file, provided at compile-time. example: 6.3.9600.17415 |
-| original_file_name | `string` | Specifies the internal name of the file, provided at compile-time. example: MSPAINT.EXE |
-| product | `string` | Specifies the internal product name of the file, provided at compile-time. example: Microsoft® Windows® Operating System |
-
-Code signature vocabulary
+### Code signature vocabulary
 | value | type | description |
 |--|--|--|
 | exists | `boolean` | Specifies the boolean to capture if a signature is present. |
@@ -44,24 +35,25 @@ Code signature vocabulary
 Example:
 
     {
-        "5": {
+        "0": {
             "type": "file",
-            "x_pe": {
-                "file_version": "10.0.17763.1 (WinBuild.160101.0800)",
-                "product": "Microsoft\u00ae Windows\u00ae Operating System",
-                "description": "Host Process for Windows Services",
-                "company": "Microsoft Corporation",
-                "original_file_name": "svchost.exe"
-            },
+            "x_software_ref": "2",
             "name": "svchost.exe",
-            "parent_directory_ref": "6",
+            "parent_directory_ref": "1",
             "hashes": {
                 "SHA-256": "7fd065bac18c5278777ae44908101cdfed72d26fa741367f0ad4d02020787ab6",
+                "SHA-256": "aaaa1111bbbb2222",
                 "MD5": "8a0a29438052faed8a2532da50455756"
             }
         },
-        "6": {
+        "1": {
             "type": "directory",
             "path": "C:\\Windows\\System32"
+        },
+        "2": {
+            "type": "software",
+            "vendor": "Microsoft Corporation",
+            "version": "10.0.17763.1 (WinBuild.160101.0800)",
+            "name": "svchost.exe"
         }
     }
