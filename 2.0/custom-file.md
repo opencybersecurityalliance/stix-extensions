@@ -37,6 +37,15 @@ Example:
     {
         "0": {
             "type": "file",
+            "x_attributes": ["system"],
+            "x_extension": "exe",
+            "x_path": "C:\\Windows\\System32\\svchost.exe",
+            "x_type": "file",
+            "x_owner_ref": "3",
+            "x_code_signature": {
+                "exists": "true",
+                "valid": "true"
+            }
             "x_software_ref": "2",
             "name": "svchost.exe",
             "parent_directory_ref": "1",
@@ -54,5 +63,10 @@ Example:
             "vendor": "Microsoft Corporation",
             "version": "10.0.17763.1 (WinBuild.160101.0800)",
             "name": "svchost.exe"
+        },
+        "3": {
+            "type": "user-account",
+            "user_id": "SYSTEM",
+            "account_login": "SYSTEM"
         }
     }
