@@ -1,5 +1,5 @@
 ## file object with custom attributes
-Specifies custom atributes for the [`file`](http://docs.oasis-open.org/cti/stix/v2.0/cs01/part4-cyber-observable-objects/stix-v2.0-cs01-part4-cyber-observable-objects.html#_Toc496716232) object to describe commonly used descriptors for a file.
+Specifies custom atributes for the [`file`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_99bl2dibcztv) object to describe commonly used descriptors for a file.
 
 | property name | type | description |
 |--|--|--|

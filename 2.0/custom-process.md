@@ -1,6 +1,6 @@
 ## process object with custom attributes
 
-Specifies custom atributes for the [`process`](http://docs.oasis-open.org/cti/stix/v2.0/cs01/part4-cyber-observable-objects/stix-v2.0-cs01-part4-cyber-observable-objects.html#_Toc496716272) object to describe commonly used descriptors for a process.
+Specifies custom atributes for the [`process`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_hpppnm86a1jm) object to describe commonly used descriptors for a process.
 
 | property name | type | description |
 |--|--|--|
@@ -19,7 +19,7 @@ Example:
             "name": "services.exe",
             "pid": 1068,
             "x_unique_id": "{8dfc401c-1ef5-6175-0b00-000000001b00}",
-            "binary_ref": "2",
+            "image_ref": "2",
             "command_line": "C:\\Windows\\system32\\services.exe"
         },
         "1": {
