@@ -1,4 +1,4 @@
-#Windows™ Sysmon extension
+# Windows™ Sysmon extension
 **Type Name**: `x-ibm-sysmon-ext`
 
 The sysmon extension adds properties from the [sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) event log which are not supported by the official stix definitions.
@@ -10,7 +10,7 @@ These can than be used for example in order to translate [sigma rules](https://g
 |--------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | original_file_name | string | Specifies a PE original file name as extracted from the PE headers and is being parsed by sysmon as `OriginalFileName`. For further reading refer to this [blog](https://medium.com/@olafhartong/sysmon-10-0-new-features-and-changes-e82106f2e00). In short - an attacker may change the file name, but the name in the PE header will depict the original name. Editing the PE header will change the file hash as well which might have implications on detection evasion. This extension property should be added to the `file` sco is availbale. |
 
-##Example:
+## Example:
 
 ```
 {
