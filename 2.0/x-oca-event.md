@@ -50,7 +50,7 @@ Certain events are important for security context which have their unique proper
 
 ## Examples
 
-###An event indicating a network communication from an endpoint
+### An event indicating a network communication from an endpoint
 
 network communication from the host `host1.exmaple.com` to url `https://example.com/download` performed by the `chrome.exe` process.
 
@@ -171,7 +171,7 @@ network communication from the host `host1.exmaple.com` to url `https://example.
 ```
 
 
-###An event indicating a file create from an endpoint
+### An event indicating a file create from an endpoint
 
 A file `example.exe` has been created on the host `host1.exmaple.com` by the `chrome.exe` process.
 
@@ -280,7 +280,7 @@ A file `example.exe` has been created on the host `host1.exmaple.com` by the `ch
     }
 ```
 
-###A named pipe event
+### A named pipe event
 
 A named pipe `foo` has been created on `host1.example.com` by process `svchost`
 
