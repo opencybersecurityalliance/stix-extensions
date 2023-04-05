@@ -39,6 +39,7 @@ Use of references helps to hint the relevance of the data. For example an file c
 | timezone | `string` | The timezone where the event was discovered. |
 | duration | `string` | The duration of the event. |
 | dataset | `string` | The dataset of the event. |
+| x_ttp_tagging_refs | `list` of type `object-ref` | References any TTP (techniues tactics and procedures) related to this event. must be of type `x-ibm-ttp-tagging` |
 
 ## Examples
 
