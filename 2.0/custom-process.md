@@ -9,7 +9,7 @@ Specifies custom atributes for the [`process`](https://docs.oasis-open.org/cti/s
 | x_exit_code | `integer` | Specifies the exit code of a process. Present if this is a terminaton event. |
 | x_uptime | `integer` | Specifies the amount of time in seconds a process has been up. |
 | x_unique_id | `string` | Specifies globally unique identifier for a process, commonly used to mitigate PID reuse and to identify a specific process over time, across multiple monitored hosts.  For example - process-generated UUID, Sysmon Process GUIDs, or a hash of some uniquely identifying components of a process. |
-| x_ttp_tags | `list` of type `string` | Specifies the list of keywords used to tag an event. |
+| x_tags | `list` of type `string` | Specifies the list of keywords used to tag an event. |
 
 Example:
 
