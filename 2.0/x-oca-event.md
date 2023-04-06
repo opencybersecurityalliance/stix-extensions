@@ -41,6 +41,8 @@ Use of references helps to hint the relevance of the data. For example a file cr
 | duration                 | `string`                    | The duration of the event.                                                                                                                                                                                                            |
 | dataset                  | `string`                    | The dataset of the event.                                                                                                                                                                                                             |
 | pipe_name                | `string`                    | In windows, there are many security rules that look for the pipe name property in a named pipe event. the value of this property should include the full pipe name in case of a named pipe event. see [example](#a-named-pipe-event). |
+| x_ttp_tagging_refs       | `list` of type `object-ref` | References any TTP (techniues tactics and procedures) related to this event. must be of type `x-ibm-ttp-tagging`                                                                                                                      |
+
 
 ## Examples
 
