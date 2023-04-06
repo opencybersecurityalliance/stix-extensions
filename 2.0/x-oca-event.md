@@ -2,48 +2,51 @@
 Adds a new object for describing events. 
 Since STIX was originally created for threat intelligence and not for SIEM or EDR data, it did not have the concept of an event.
 Take an endpoint file create event as an example - the observed data would include the process and file details - but you would be missing the context
-to underdstand what happened between these two - did the process create or delete or write to the file?
-Another example is a cross process event. You would have details of two processes - but you wouldnt know which process performed the cross process event on the other.
+to understand what happened between these two - did the process create or delete or write to the file?
+Another example is a cross process event. You would have details of two processes - but you would not know which process performed the cross process event on the other.
 The `x-oca-event` object adds this context. What action was performed, Where was it performed, what was the outcome and what are the references to other SCO's that this event relates to.
-Use of references helps to hint the relevance of the data. For example an file create event should have the `x-oca-event.file_ref` pointing to the created file. This would help the observer undersdtand, since a typical observed data SDO would contain more than one `file` SCO.
+Use of references helps to hint the relevance of the data. For example a file create event should have the `x-oca-event.file_ref` pointing to the created file. This would help the observer understand, since a typical observed data SDO would contain more than one `file` SCO.
 
-| property name | type | description |
-|--|--|--|
-|type| `string` | x-oca-event |
-|action|`string`|describes the event action. for example process create|
-|category|`list` of type `string`|categories describing the event. for example "process" or "system"|
-|code|`integer`|event code or event id from the original log source|
-|created|`timestamp`|when this event was created|
-|start|`timestamp`|when this event started|
-|end|`timestamp`|when this event ended|
-|duration|`integer`|the duration of this event from start to end in nanoseconds|
-|module|`string`|Name of the module this data is coming from. for example "sysmon"|
-|original_ref|`object-ref`|references the original raw event data. must be of type `artifact`|
-|outcome|`string`|the outcome of this event. for example "process create success"|
-|provider|`string`|the provider of this log. for example "Microsoft Windows Security Event Log"|
-|agent|`string`|describes the name of the agent that collected this event log|
-|host_ref|`object-ref`|references the host related to this event. must be of type `x-oca-asset`|
-|url_ref|`object-ref`|references a url related to this event. must be of type `url`|
-|file_ref|`object-ref`|references a file related to this event. must be of type `file`|
-|process_ref|`object-ref`|references a process related to this event. must be of type `process`|
-|parent_process_ref|`object-ref`|references a parent process related to this event. must be of type `process`|
-|cross_process_target_ref|`object-ref`|references the target process in case of a cross process event. must be of type `process`|
-|domain_ref|`object-ref`|references a domain related to this event. must be of type `domain-name`|
-|registry_ref|`object-ref`|references windows registry data related to this event. must be of type `windows-registry-key`|
-|network_ref|`object-ref`|references network traffic related to this event. must be of type `network-traffic`|
-|ip_refs|`list` of type `object-ref`|references any ip addresses related to this event. must be of type `ipv4-address` or `ipv6-address`|
-|user_ref|`object-ref`|references the user related to this event. must be of type `user-account`|
-| severity | `number` | Severity of the event on a scale of 1-100. | 
-| start | `timestamp` | The start time in UTC of the event. |
-| end | `timestamp` | The end time in UTC of the event. |
-| timezone | `string` | The timezone where the event was discovered. |
-| duration | `string` | The duration of the event. |
-| dataset | `string` | The dataset of the event. |
-| x_ttp_tagging_refs | `list` of type `object-ref` | References any TTP (techniues tactics and procedures) related to this event. must be of type `x-ibm-ttp-tagging` |
+
+| property name            | type                        | description                                                                                                                                                                                                                           |
+|--------------------------|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type                     | `string`                    | x-oca-event                                                                                                                                                                                                                           |
+| action                   | `string`                    | describes the event action. for example process create                                                                                                                                                                                |
+| category                 | `list` of type `string`     | categories describing the event. for example "process" or "system"                                                                                                                                                                    |
+| code                     | `integer`                   | event code or event id from the original log source                                                                                                                                                                                   |
+| created                  | `timestamp`                 | when this event was created                                                                                                                                                                                                           |
+| start                    | `timestamp`                 | when this event started                                                                                                                                                                                                               |
+| end                      | `timestamp`                 | when this event ended                                                                                                                                                                                                                 |
+| duration                 | `integer`                   | the duration of this event from start to end in nanoseconds                                                                                                                                                                           |
+| module                   | `string`                    | Name of the module this data is coming from. for example "sysmon"                                                                                                                                                                     |
+| original_ref             | `object-ref`                | references the original raw event data. must be of type `artifact`                                                                                                                                                                    |
+| outcome                  | `string`                    | the outcome of this event. for example "process create success"                                                                                                                                                                       |
+| provider                 | `string`                    | the provider of this log. for example "Microsoft Windows Security Event Log"                                                                                                                                                          |
+| agent                    | `string`                    | describes the name of the agent that collected this event log                                                                                                                                                                         |
+| host_ref                 | `object-ref`                | references the host related to this event. must be of type `x-oca-asset`                                                                                                                                                              |
+| url_ref                  | `object-ref`                | references a url related to this event. must be of type `url`                                                                                                                                                                         |
+| file_ref                 | `object-ref`                | references a file related to this event. must be of type `file`                                                                                                                                                                       |
+| process_ref              | `object-ref`                | references a process related to this event. must be of type `process`                                                                                                                                                                 |
+| parent_process_ref       | `object-ref`                | references a parent process related to this event. must be of type `process`                                                                                                                                                          |
+| cross_process_target_ref | `object-ref`                | references the target process in case of a cross process event. must be of type `process`                                                                                                                                             |
+| domain_ref               | `object-ref`                | references a domain related to this event. must be of type `domain-name`                                                                                                                                                              |
+| registry_ref             | `object-ref`                | references windows registry data related to this event. must be of type `windows-registry-key`                                                                                                                                        |
+| network_ref              | `object-ref`                | references network traffic related to this event. must be of type `network-traffic`                                                                                                                                                   |
+| ip_refs                  | `list` of type `object-ref` | references any ip addresses related to this event. must be of type `ipv4-address` or `ipv6-address`                                                                                                                                   |
+| user_ref                 | `object-ref`                | references the user related to this event. must be of type `user-account`                                                                                                                                                             |
+| severity                 | `number`                    | Severity of the event on a scale of 1-100.                                                                                                                                                                                            | 
+| start                    | `timestamp`                 | The start time in UTC of the event.                                                                                                                                                                                                   |
+| end                      | `timestamp`                 | The end time in UTC of the event.                                                                                                                                                                                                     |
+| timezone                 | `string`                    | The timezone where the event was discovered.                                                                                                                                                                                          |
+| duration                 | `string`                    | The duration of the event.                                                                                                                                                                                                            |
+| dataset                  | `string`                    | The dataset of the event.                                                                                                                                                                                                             |
+| pipe_name                | `string`                    | In windows, there are many security rules that look for the pipe name property in a named pipe event. the value of this property should include the full pipe name in case of a named pipe event. see [example](#a-named-pipe-event). |
+| x_ttp_tagging_refs       | `list` of type `object-ref` | References any TTP (techniues tactics and procedures) related to this event. must be of type `x-ibm-ttp-tagging`                                                                                                                      |
+
 
 ## Examples
 
-### an event indicating a network communication from an endpoint
+### An event indicating a network communication from an endpoint
 
 network communication from the host `host1.exmaple.com` to url `https://example.com/download` performed by the `chrome.exe` process.
 
@@ -164,7 +167,7 @@ network communication from the host `host1.exmaple.com` to url `https://example.
 ```
 
 
-### an event indicating a file create from an endpoint
+### An event indicating a file create from an endpoint
 
 A file `example.exe` has been created on the host `host1.exmaple.com` by the `chrome.exe` process.
 
@@ -273,48 +276,105 @@ A file `example.exe` has been created on the host `host1.exmaple.com` by the `ch
     }
 ```
 
+### A named pipe event
+
+A named pipe `foo` has been created on `host1.example.com` by process `svchost`
+
+```
+{
+        "id": "observed-data--7805aca6-b29d-4e1a-86b2-ba4eb1110046",
+        "type": "observed-data",
+        "created_by_ref": "identity--ab920cb1-239b-4371-b7f6-66f634de9927",
+        "created": "2022-07-15T18:43:10.813Z",
+        "modified": "2022-07-15T18:43:10.813Z",
+        "first_observed": "2022-07-15T18:43:10.813Z",
+        "last_observed": "2022-07-15T18:43:10.813Z",
+        "number_observed": 1,
+        "objects":
+        {
+            "0":
+            {
+                "type": "x-oca-event",
+                "action": "NamedPipeEvent",
+                "created": "2022-07-15T18:43:21.3214492Z",
+                "host_ref": "1",
+                "process_ref": "4",
+                "pipe_name": "\\\\host1.example.com\\PIPE\\foo"
+            },
+            "1":
+            {
+                "type": "x-oca-asset",
+                "hostname": "host1.example.com"
+            },
+            "2":
+            {
+                "name": "svchost.exe",
+                "type": "file",
+                "hashes":
+                {
+                    "SHA-1": "1bc5066ddf693fc034d6514618854e26a84fd0d1"
+                },
+                "parent_directory_ref": "3"
+            },
+            "3":
+            {
+                "path": "C:\\Windows\\System32",
+                "type": "directory"
+            },
+            "4":
+            {
+                "pid": 14068,
+                "name": "svchost.exe",
+                "type": "process",
+                "created": "2022-07-15T15:41:11.3214492Z",
+                "binary_ref": "6"
+            }
+        }
+    }
+```
+
 ## IAM Extension
 
 **Type Name**: `x-iam-ext`
 
 The IAM extension represents data from Identity and Access Management events. The key for this extension when used in the **extensions** dictionary **MUST** be `x-iam-ext`. An object using the IAM Extension **MUST** contain at least one property from this extension.
 
-| property name | type | description |
-|--|--|--|
-| result| `string` | Result of the action such as "success" or "failure" |
-| sub_category| `string` | Identity source type used for authentication: clouddirectory, oidc,saml, ibmldap, maasconnect etc. |
-| realm | `string` | Identity source of user. Examples: <ul> <li>Cloud Directory: CloudIdentityRealm </li> <li> IBMid: www.ibm.com </li> <li>SAML Enterprise: AzureRealm </li> <li> LDAP Pass-Through: www.cloudsecurity.com </li><li> OIDC: www.yahoo.com </li> |
-| application_id | `string` | Identifier of application that caused event to be generated |
-| user_id | `string` | Identifier of user that caused event to be generated  |
-| application_type | `string` |  Type of application such as Custom application or specific cloud application |
-| browser_agent | `string` |  Browser user agent |
-| application_name | `string` | Name of application that caused event to be generated |
-| cause | `string` |  The message describing the result of action |
-| messageid | `string` |  The messageid for the message in cause  |
-| target | `string` |  Target of the event  |
-| targetid | `string` |  Supplemental information to define the target of the action. Used by resources: user, group  |
-| targetid_realm | `string` |  realm of the target. Used by resources: user, group  |
-| targetid_username | `string` |  User name of the target. Used by resources: user, group  |
-| deleted | `string` |   For the resource group, number of users deleted |
-| performedby_clientname | `string` |  API client name  |
-| performedby_realm | `string` |   realm of the person who performed the action.  |
-| performedby_username | `string` |  User name  of the person who performed the action.  |
-| continent_name | `string` |  Geoip information for IP address - Continent name  |
-| country_iso_code | `string` |  Geoip information for IP address - Country code  |
-| country_name | `string` |  Geoip information for IP address - Country name  |
-| city_name | `string` |  Geoip information for IP address - City name  |
-| policy_action | `string` |  Action related to policy such as Block, MFA, Allow   |
-| policy_name | `string` |  The policy name that were applied to the event.  |
-| rule_name | `string` |  Name of the rule that got triggerd for risk based authentication  |
-| decision_reason | `string` |  Decision reason for policy action  |
-| location_lat | `string` | Geoip information for IP address - Location Lattitude  |
-| location_lon | `string` |  Geoip information for IP address - Location Longitude |
-| risk_level | `string` |  Level of risk -  Very high, High, Medium, Low |
-| risk_score | `string` | Risk Score  |
-| deviceid | `string` |   Identifier for device |
-| is_device_compliant | `string` | Boolean flag to indicate if device is compliant  |
-| is_device_managed | `string` |  Boolean flag to indicate if device is managed |
-| mdm_customerid | `string` | Customer id for MDM (Mobile Device Managent)  |
+| property name          | type     | description                                                                                                                                                                                                                                 |
+|------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| result                 | `string` | Result of the action such as "success" or "failure"                                                                                                                                                                                         |
+| sub_category           | `string` | Identity source type used for authentication: clouddirectory, oidc,saml, ibmldap, maasconnect etc.                                                                                                                                          |
+| realm                  | `string` | Identity source of user. Examples: <ul> <li>Cloud Directory: CloudIdentityRealm </li> <li> IBMid: www.ibm.com </li> <li>SAML Enterprise: AzureRealm </li> <li> LDAP Pass-Through: www.cloudsecurity.com </li><li> OIDC: www.yahoo.com </li> |
+| application_id         | `string` | Identifier of application that caused event to be generated                                                                                                                                                                                 |
+| user_id                | `string` | Identifier of user that caused event to be generated                                                                                                                                                                                        |
+| application_type       | `string` | Type of application such as Custom application or specific cloud application                                                                                                                                                                |
+| browser_agent          | `string` | Browser user agent                                                                                                                                                                                                                          |
+| application_name       | `string` | Name of application that caused event to be generated                                                                                                                                                                                       |
+| cause                  | `string` | The message describing the result of action                                                                                                                                                                                                 |
+| messageid              | `string` | The messageid for the message in cause                                                                                                                                                                                                      |
+| target                 | `string` | Target of the event                                                                                                                                                                                                                         |
+| targetid               | `string` | Supplemental information to define the target of the action. Used by resources: user, group                                                                                                                                                 |
+| targetid_realm         | `string` | realm of the target. Used by resources: user, group                                                                                                                                                                                         |
+| targetid_username      | `string` | User name of the target. Used by resources: user, group                                                                                                                                                                                     |
+| deleted                | `string` | For the resource group, number of users deleted                                                                                                                                                                                             |
+| performedby_clientname | `string` | API client name                                                                                                                                                                                                                             |
+| performedby_realm      | `string` | realm of the person who performed the action.                                                                                                                                                                                               |
+| performedby_username   | `string` | User name  of the person who performed the action.                                                                                                                                                                                          |
+| continent_name         | `string` | Geoip information for IP address - Continent name                                                                                                                                                                                           |
+| country_iso_code       | `string` | Geoip information for IP address - Country code                                                                                                                                                                                             |
+| country_name           | `string` | Geoip information for IP address - Country name                                                                                                                                                                                             |
+| city_name              | `string` | Geoip information for IP address - City name                                                                                                                                                                                                |
+| policy_action          | `string` | Action related to policy such as Block, MFA, Allow                                                                                                                                                                                          |
+| policy_name            | `string` | The policy name that were applied to the event.                                                                                                                                                                                             |
+| rule_name              | `string` | Name of the rule that got triggerd for risk based authentication                                                                                                                                                                            |
+| decision_reason        | `string` | Decision reason for policy action                                                                                                                                                                                                           |
+| location_lat           | `string` | Geoip information for IP address - Location Latitude                                                                                                                                                                                        |
+| location_lon           | `string` | Geoip information for IP address - Location Longitude                                                                                                                                                                                       |
+| risk_level             | `string` | Level of risk -  Very high, High, Medium, Low                                                                                                                                                                                               |
+| risk_score             | `string` | Risk Score                                                                                                                                                                                                                                  |
+| deviceid               | `string` | Identifier for device                                                                                                                                                                                                                       |
+| is_device_compliant    | `string` | Boolean flag to indicate if device is compliant                                                                                                                                                                                             |
+| is_device_managed      | `string` | Boolean flag to indicate if device is managed                                                                                                                                                                                               |
+| mdm_customerid         | `string` | Customer id for MDM (Mobile Device Management)                                                                                                                                                                                              |
 
 ### Example
 
