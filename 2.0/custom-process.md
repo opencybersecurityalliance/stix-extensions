@@ -31,7 +31,7 @@ Example:
             "x_unique_id": "{8dfc401c-1ef7-6175-2900-000000001b00}",
             "x_thread_id": "4242",
             "command_line": "C:\\Windows\\system32\\svchost.exe -k netsvcs -p -s Schedule",
-            "x_ttp_tags": [
+            "x_tags": [
                 "beats_input_codec_plain_applied"
             ]
         },
