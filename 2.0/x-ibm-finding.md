@@ -83,7 +83,7 @@ Where possible, references are made to existing STIX objects (ie. ip addresses, 
           "src_device": "Chrome",
           "ttp_tagging_refs": [5], 
           "ioc_refs": ["6","7"]
-       }
+       },
        "5": {
           "type": "x-ibm-ttp-tagging",
           "name": "Active Scanning",
