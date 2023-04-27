@@ -17,6 +17,11 @@ While `x-oca-asset` specifies the host on which the associated event occurred, i
 |mac_refs|`list` of type `object-ref`| references the mac addresses related to this host. must be of type `mac-addr`|
 | os_ref | `object-ref` | Specifies the operating system of the asset, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
 | architecture | `string` | Architecture of the asset. |
+| uptime | `string` | Specifies the seconds the asset has been up.|
+| host_type | `string` | Specifies the type of asset. Example, firewall, t2.micro etc.|
+| serial_number | `string` | Specifies the serial number of the asset. |
+| ingress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify ingress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
+| egress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify egress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
 
 ### Container Extenstion
 
@@ -59,6 +64,21 @@ The pod asset extension represents an oc/k8s pod.
 | name | `string` | pod name |
 | ip_refs | `list` of type `object-ref` | references the ip addresses allocated to this pod. must be `ipv4-addr` or `ipv6-addr` |
 
+#### Traffic Dictionary
+
+| value | type | description |
+|--|--|--|
+| zone | `string` | Specifies the network zone of the inbound or outbound traffic.|
+| interfaces | list of type `dictionary` | Specifies the interface information. Each dictionary key SHOULD come from the Interface vocabulary. |
+
+#### Interface Dictionary
+
+| value | type | description |
+|--|--|--|
+| alias | `string` | Specifies the interface alias as reported by the system. |
+| id | `string` | Specifies the interface ID. |
+| name | `string` | Specifies the interface name as reported by the system.|
+
 ### Example
 
     {
@@ -72,21 +92,33 @@ The pod asset extension represents an oc/k8s pod.
 	        "type": "x-oca-asset",
 	        "ip_refs": ["0", "2"],
 	        "hostname": "example host",
-		"host_id": "123A",
+			"host_id": "123A",
 	        "mac_refs": ["3"],
-		"extensions": {
-		    "x-oca-container-ext": {
-                        "name": "example container",
-                        "id”: “bf032feb4117",
-                        "image_id": "92b1b5d66457...",
-                        "image_name": "us.icr.io/...",
-                        "container_type": "crio"
-                    },
-		    "x-oca-pod-ext": {
-                        "name": "example pod",
-                        "ip_refs": ["4"]
-                    }
-		}
+			"host_type": "APM Server",
+			"egress":
+				{
+				"zone": "internal",
+				"interfaces": [
+					{
+					"alias": "inside",
+					"id": "10",
+					"name", "eth0"
+					}
+				]
+			},
+			"extensions": {
+				"x-oca-container-ext": {
+							"name": "example container",
+							"id”: “bf032feb4117",
+							"image_id": "92b1b5d66457...",
+							"image_name": "us.icr.io/...",
+							"container_type": "crio"
+						},
+				"x-oca-pod-ext": {
+							"name": "example pod",
+							"ip_refs": ["4"]
+						}
+			}
 	    },
 	    "2":
 	    {

@@ -17,8 +17,8 @@ Where possible, references are made to existing STIX objects (ie. ip addresses, 
 | dst_os_ref | `object-ref` | Specifies the destination operating system of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
 | src_application_ref | `object-ref` | Specifies the source application of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
 | dst_application_ref | `object-ref` | Specifies the destination application of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
-| src_geolocation | `string` | Specifies the source geographic location of the finding. |
-| dst_geolocation | `string` | Specifies the destination geographic location of the finding. |
+|src_geo_ref | `object-ref` | Specifies the source geographic location of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `x-oca-geo`.|
+|dst_geo_ref | `object-ref` | Specifies the destination geographic location of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `x-oca-geo`.|
 | src_device | `string` | Specifies the source device of the finding. (ie. database, browser) |
 | dst_device | `string` | Specifies the destination device of the finding. (ie. database, browser) |
 | src_application_user_ref | `object-ref` | Specifies the source application user of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `user-account`. |
@@ -79,7 +79,7 @@ Where possible, references are made to existing STIX objects (ie. ip addresses, 
           "dst_ip_ref": "1",
           "src_application_user_ref": "2",
           "src_application_ref": "3",
-          "src_geolocation": "USA",
+          "src_geo_ref": "8",
           "src_device": "Chrome",
           "ttp_tagging_refs": [5], 
           "ioc_refs": ["6","7"]
@@ -115,6 +115,10 @@ Where possible, references are made to existing STIX objects (ie. ip addresses, 
         "7": {
                 "type": "url",
                 "value": "http://maliciousmalware.bad"
+        },
+        "8": {
+                "type": "x-oca-geo",
+                "country_iso_code": "US"
         }
     }
 }
