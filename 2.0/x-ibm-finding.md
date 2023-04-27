@@ -17,8 +17,8 @@ Where possible, references are made to existing STIX objects (ie. ip addresses, 
 | dst_os_ref | `object-ref` | Specifies the destination operating system of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
 | src_application_ref | `object-ref` | Specifies the source application of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
 | dst_application_ref | `object-ref` | Specifies the destination application of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
-| src_geo_ref | `object-ref` | Specifies the source geographic location of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `x-oca-geo`.|
-| dst_geo_ref | `object-ref` | Specifies the destination geographic location of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `x-oca-geo`.|
+|src_geo_ref | `object-ref` | Specifies the source geographic location of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `x-oca-geo`.|
+|dst_geo_ref | `object-ref` | Specifies the destination geographic location of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `x-oca-geo`.|
 | src_device | `string` | Specifies the source device of the finding. (ie. database, browser) |
 | dst_device | `string` | Specifies the destination device of the finding. (ie. database, browser) |
 | src_application_user_ref | `object-ref` | Specifies the source application user of the finding, as a reference to the Cyber-observable Object. The object referenced must be of type `user-account`. |
