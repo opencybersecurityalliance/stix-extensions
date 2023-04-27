@@ -59,6 +59,21 @@ The pod asset extension represents an oc/k8s pod.
 | name | `string` | pod name |
 | ip_refs | `list` of type `object-ref` | references the ip addresses allocated to this pod. must be `ipv4-addr` or `ipv6-addr` |
 
+#### Traffic Dictionary
+
+| value | type | description |
+|--|--|--|
+| zone | `string` | Specifies the network zone of the inbound or outbound traffic.|
+| interface | `dictionary` | Specifies the interface information. Each dictionary key SHOULD come from the Interface vocabulary. |
+
+#### Interface Dictionary
+
+| value | type | description |
+|--|--|--|
+| alias | `string` | Specifies the interface alias as reported by the system. e.g., dmz |
+| id | `string` | Specifies the interface ID. |
+| name | `string` | Specifies the interface name as reported by the system.|
+
 ### Example
 
     {
