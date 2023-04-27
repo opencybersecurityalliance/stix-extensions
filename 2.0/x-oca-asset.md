@@ -69,7 +69,7 @@ The pod asset extension represents an oc/k8s pod.
 | value | type | description |
 |--|--|--|
 | zone | `string` | Specifies the network zone of the inbound or outbound traffic.|
-| interface | `dictionary` | Specifies the interface information. Each dictionary key SHOULD come from the Interface vocabulary. |
+| interfaces | list of type `dictionary` | Specifies the interface information. Each dictionary key SHOULD come from the Interface vocabulary. |
 
 #### Interface Dictionary
 
@@ -95,13 +95,16 @@ The pod asset extension represents an oc/k8s pod.
 			"host_id": "123A",
 	        "mac_refs": ["3"],
 			"host_type": "APM Server",
-			"egress":{
+			"egress":
+				{
 				"zone": "internal",
-				"interface": {
+				"interfaces": [
+					{
 					"alias": "inside",
 					"id": "10",
 					"name", "eth0"
-				}
+					}
+				]
 			},
 			"extensions": {
 				"x-oca-container-ext": {
