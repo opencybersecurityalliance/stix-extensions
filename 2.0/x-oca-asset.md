@@ -22,6 +22,7 @@ While `x-oca-asset` specifies the host on which the associated event occurred, i
 | serial_number | `string` | Specifies the serial number of the asset. |
 | ingress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify ingress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
 | egress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify egress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
+|geo_ref|`object-ref`| references the geolocation of this host. must be of type `x-oca-geo`|
 
 ### Container Extenstion
 
@@ -95,6 +96,7 @@ The pod asset extension represents an oc/k8s pod.
 			"host_id": "123A",
 	        "mac_refs": ["3"],
 			"host_type": "APM Server",
+			"geo_ref": "5",
 			"egress":
 				{
 				"zone": "internal",
@@ -135,6 +137,18 @@ The pod asset extension represents an oc/k8s pod.
 	    {
 	        "type": "ipv4-addr",
 	        "value": "192.168.xxx.yyy"
-	    }
+	    },
+		"5":
+		{
+			"type": "x-oca-geo",
+	        "name": "Dallas-1",
+			"time_zone": "America/Chicago",
+			"country_iso_code": "US",
+			"country_name": "United States of America",
+			"location":
+				"lon": "-96.800496798",
+				"lat": "32.785663524"
+
+		}
     }
 
