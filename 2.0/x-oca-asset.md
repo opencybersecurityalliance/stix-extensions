@@ -82,73 +82,74 @@ The pod asset extension represents an oc/k8s pod.
 
 ### Example
 
-    {
-	    "0":
-	    {
-	        "type": "ipv4-addr",
-	        "value": "9.9.9.9"
-	    },
-		"1":
-	    {
-	        "type": "x-oca-asset",
-			"ip_refs": ["0", "2"],
-			"hostname": "example host",
-			"host_id": "123A",
-			"mac_refs": ["3"],
-			"host_type": "APM Server",
-			"geo_ref": "5",
-			"egress":
-				{
-				"zone": "internal",
-				"interfaces": [
-					{
-					"alias": "inside",
-					"id": "10",
-					"name", "eth0"
-					}
-				]
-			},
-			"extensions": {
-				"x-oca-container-ext": {
-					"name": "example container",
-					"id”: “bf032feb4117",
-					"image_id": "92b1b5d66457...",
-					"image_name": "us.icr.io/...",
-					"container_type": "crio"
-				},
-				"x-oca-pod-ext": {
-					"name": "example pod",
-					"ip_refs": ["4"]
-				}
-			}
-	    },
-	    "2":
-	    {
-	        "type": "ipv6-addr",
-	        "value": "ffff:1111:ffff:1111:ffff:1111:ffff:1111",
-	        "resolves_to_refs": ["7"]
-	    },
-	    "3":
-	    {
-	        "type": "mac-addr",
-	        "value": "00-00-11-00-22-00"
-	    },
-	    "4":
-	    {
-	        "type": "ipv4-addr",
-	        "value": "192.168.xxx.yyy"
-	    },
-		"5":
-		{
-			"type": "x-oca-geo",
-			"name": "Dallas-1",
-			"time_zone": "America/Chicago",
-			"country_iso_code": "US",
-			"country_name": "United States of America",
-			"location":
-				"lon": "-96.800496798",
-				"lat": "32.785663524"
-
-		}
+{
+  "0": {
+    "type": "ipv4-addr",
+    "value": "9.9.9.9"
+  },
+  "1": {
+    "type": "x-oca-asset",
+    "ip_refs": [
+      "0",
+      "2"
+    ],
+    "hostname": "example host",
+    "host_id": "123A",
+    "mac_refs": [
+      "3"
+    ],
+    "host_type": "APM Server",
+    "geo_ref": "5",
+    "egress": {
+      "zone": "internal",
+      "interfaces": [
+        {
+          "alias": "inside",
+          "id": "10",
+          "name": "eth0"
+        }
+      ]
+    },
+    "extensions": {
+      "x-oca-container-ext": {
+        "name": "example container",
+        "id": "bf032feb4117",
+        "image_id": "92b1b5d66457...",
+        "image_name": "us.icr.io/...",
+        "container_type": "crio"
+      },
+      "x-oca-pod-ext": {
+        "name": "example pod",
+        "ip_refs": [
+          "4"
+        ]
+      }
     }
-
+  },
+  "2": {
+    "type": "ipv6-addr",
+    "value": "ffff:1111:ffff:1111:ffff:1111:ffff:1111",
+    "resolves_to_refs": [
+      "7"
+    ]
+  },
+  "3": {
+    "type": "mac-addr",
+    "value": "00-00-11-00-22-00"
+  },
+  "4": {
+    "type": "ipv4-addr",
+    "value": "192.168.xxx.yyy"
+  },
+  "5": {
+    "type": "x-oca-geo",
+    "name": "Dallas-1",
+    "time_zone": "America/Chicago",
+    "country_iso_code": "US",
+    "country_name": "United States of America",
+    "location": {
+      "lon": "-96.800496798",
+      "lat": "32.785663524"
+    }
+  }
+}
