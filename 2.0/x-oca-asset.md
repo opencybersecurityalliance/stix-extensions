@@ -89,7 +89,7 @@ The pod asset extension represents an oc/k8s pod.
 	        "value": "9.9.9.9"
 	    },
 	    "1":
-	    {
+		{
 			"type": "x-oca-asset",
 			"ip_refs": ["0", "2"],
 			"hostname": "example host",
