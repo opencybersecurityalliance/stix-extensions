@@ -82,6 +82,7 @@ The pod asset extension represents an oc/k8s pod.
 
 ### Example
 
+```json
 {
   "0": {
     "type": "ipv4-addr",
