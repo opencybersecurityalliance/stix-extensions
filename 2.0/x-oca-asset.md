@@ -92,9 +92,9 @@ The pod asset extension represents an oc/k8s pod.
 	    {
 	        "type": "x-oca-asset",
 	        "ip_refs": ["0", "2"],
-	        "hostname": "example host",
+			"hostname": "example host",
 			"host_id": "123A",
-	        "mac_refs": ["3"],
+			"mac_refs": ["3"],
 			"host_type": "APM Server",
 			"geo_ref": "5",
 			"egress":
@@ -110,16 +110,16 @@ The pod asset extension represents an oc/k8s pod.
 			},
 			"extensions": {
 				"x-oca-container-ext": {
-							"name": "example container",
-							"id”: “bf032feb4117",
-							"image_id": "92b1b5d66457...",
-							"image_name": "us.icr.io/...",
-							"container_type": "crio"
-						},
+					"name": "example container",
+					"id”: “bf032feb4117",
+					"image_id": "92b1b5d66457...",
+					"image_name": "us.icr.io/...",
+					"container_type": "crio"
+				},
 				"x-oca-pod-ext": {
-							"name": "example pod",
-							"ip_refs": ["4"]
-						}
+					"name": "example pod",
+					"ip_refs": ["4"]
+				}
 			}
 	    },
 	    "2":
@@ -141,7 +141,7 @@ The pod asset extension represents an oc/k8s pod.
 		"5":
 		{
 			"type": "x-oca-geo",
-	        "name": "Dallas-1",
+			"name": "Dallas-1",
 			"time_zone": "America/Chicago",
 			"country_iso_code": "US",
 			"country_name": "United States of America",
