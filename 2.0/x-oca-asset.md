@@ -31,7 +31,7 @@ The container asset extension represents a container.
 |--|--|--|
 | type | `string` | x-oca-container-ext |
 | name | `string` | container name |
-| id | `string` | container id |
+| container_id | `string` | container id |
 | image_name | `string` | container image name |
 | image_id | `string` | container image id |
 | container_type | `container_type_ov` | container type | 
@@ -76,7 +76,7 @@ The pod asset extension represents an oc/k8s pod.
 | value | type | description |
 |--|--|--|
 | alias | `string` | Specifies the interface alias as reported by the system. |
-| id | `string` | Specifies the interface ID. |
+| interface_id | `string` | Specifies the interface ID. |
 | name | `string` | Specifies the interface name as reported by the system.|
 
 ### Example
@@ -101,7 +101,7 @@ The pod asset extension represents an oc/k8s pod.
 				"interfaces": [
 					{
 					"alias": "inside",
-					"id": "10",
+					"interface_id": "10",
 					"name", "eth0"
 					}
 				]
@@ -109,7 +109,7 @@ The pod asset extension represents an oc/k8s pod.
 			"extensions": {
 				"x-oca-container-ext": {
 							"name": "example container",
-							"id”: “bf032feb4117",
+							"container_id”: “bf032feb4117",
 							"image_id": "92b1b5d66457...",
 							"image_name": "us.icr.io/...",
 							"container_type": "crio"
