@@ -19,7 +19,6 @@ While `x-oca-asset` specifies the host on which the associated event occurred, i
 | architecture | `string` | Architecture of the asset. |
 | uptime | `string` | Specifies the seconds the asset has been up.|
 | host_type | `string` | Specifies the type of asset. Example, firewall, t2.micro etc.|
-| serial_number | `string` | Specifies the serial number of the asset. |
 | ingress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify ingress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
 | egress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify egress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
 
