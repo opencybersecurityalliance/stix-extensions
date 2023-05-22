@@ -19,7 +19,6 @@ While `x-oca-asset` specifies the host on which the associated event occurred, i
 | architecture | `string` | Architecture of the asset. |
 | uptime | `string` | Specifies the seconds the asset has been up.|
 | host_type | `string` | Specifies the type of asset. Example, firewall, t2.micro etc.|
-| serial_number | `string` | Specifies the serial number of the asset. |
 | ingress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify ingress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
 | egress | `dictionary` | Specifies information like interface number and name, vlan, and zone information to classify egress traffic. Each dictionary key SHOULD come from the Traffic vocabulary.|
 |geo_ref|`object-ref`| references the geolocation of this host. must be of type `x-oca-geo`|
@@ -32,7 +31,7 @@ The container asset extension represents a container.
 |--|--|--|
 | type | `string` | x-oca-container-ext |
 | name | `string` | container name |
-| id | `string` | container id |
+| container_id | `string` | container id |
 | image_name | `string` | container image name |
 | image_id | `string` | container image id |
 | container_type | `container_type_ov` | container type | 
@@ -77,80 +76,78 @@ The pod asset extension represents an oc/k8s pod.
 | value | type | description |
 |--|--|--|
 | alias | `string` | Specifies the interface alias as reported by the system. |
-| id | `string` | Specifies the interface ID. |
+| interface_id | `string` | Specifies the interface ID. |
 | name | `string` | Specifies the interface name as reported by the system.|
 
 ### Example
 
 ```json
-{
-  "0": {
-    "type": "ipv4-addr",
-    "value": "9.9.9.9"
-  },
-  "1": {
-    "type": "x-oca-asset",
-    "ip_refs": [
-      "0",
-      "2"
-    ],
-    "hostname": "example host",
-    "host_id": "123A",
-    "mac_refs": [
-      "3"
-    ],
-    "host_type": "APM Server",
-    "geo_ref": "5",
-    "egress": {
-      "zone": "internal",
-      "interfaces": [
-        {
-          "alias": "inside",
-          "id": "10",
-          "name": "eth0"
-        }
-      ]
-    },
-    "extensions": {
-      "x-oca-container-ext": {
-        "name": "example container",
-        "id": "bf032feb4117",
-        "image_id": "92b1b5d66457...",
-        "image_name": "us.icr.io/...",
-        "container_type": "crio"
-      },
-      "x-oca-pod-ext": {
-        "name": "example pod",
-        "ip_refs": [
-          "4"
-        ]
+    {
+	    "0":
+	    {
+	        "type": "ipv4-addr",
+	        "value": "9.9.9.9"
+	    },
+	    "1":
+	    {
+	        "type": "x-oca-asset",
+	        "ip_refs": ["0", "2"],
+	        "hostname": "example host",
+			    "host_id": "123A",
+          "geo_ref": "5",	
+	        "mac_refs": ["3"],
+			    "host_type": "APM Server",
+          "egress":
+          {
+            "zone": "internal",
+            "interfaces": [
+              {
+                "alias": "inside",
+                "interface_id": "10",
+                "name", "eth0"
+              }
+            ]
+          },
+          "extensions": {
+            "x-oca-container-ext": {
+                  "name": "example container",
+                  "container_id”: “bf032feb4117",
+                  "image_id": "92b1b5d66457...",
+                  "image_name": "us.icr.io/...",
+                  "container_type": "crio"
+            },
+				    "x-oca-pod-ext": {
+							"name": "example pod",
+							"ip_refs": ["4"]
+						}
+			    }
+	    },
+	    "2":
+	    {
+	        "type": "ipv6-addr",
+	        "value": "ffff:1111:ffff:1111:ffff:1111:ffff:1111",
+	        "resolves_to_refs": ["7"]
+	    },
+	    "3":
+	    {
+	        "type": "mac-addr",
+	        "value": "00-00-11-00-22-00"
+	    },
+	    "4":
+	    {
+	        "type": "ipv4-addr",
+	        "value": "192.168.xxx.yyy"
+	    },
+      "5": {
+          "type": "x-oca-geo",
+          "name": "Dallas-1",
+          "time_zone": "America/Chicago",
+          "country_iso_code": "US",
+          "country_name": "United States of America",
+          "location": {
+            "lon": "-96.800496798",
+            "lat": "32.785663524"
+          }
       }
-    }
-  },
-  "2": {
-    "type": "ipv6-addr",
-    "value": "ffff:1111:ffff:1111:ffff:1111:ffff:1111",
-    "resolves_to_refs": [
-      "7"
-    ]
-  },
-  "3": {
-    "type": "mac-addr",
-    "value": "00-00-11-00-22-00"
-  },
-  "4": {
-    "type": "ipv4-addr",
-    "value": "192.168.xxx.yyy"
-  },
-  "5": {
-    "type": "x-oca-geo",
-    "name": "Dallas-1",
-    "time_zone": "America/Chicago",
-    "country_iso_code": "US",
-    "country_name": "United States of America",
-    "location": {
-      "lon": "-96.800496798",
-      "lat": "32.785663524"
-    }
   }
-}
+  ```
