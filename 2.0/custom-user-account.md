@@ -12,7 +12,7 @@ Specifies custom atributes for the [`user-account`](https://docs.oasis-open.org/
 | value | type | description |
 |--|--|--|
 | domain | `string` | Specifies the name of the directory the group is a member of. e.g., an LDAP or Active Directory domain name|
-| id | `integer` | Specifies the unique identifier for the group on the system/platform |
+| gid | `integer` | Specifies the unique identifier for the group on the system/platform |
 | name | `string` | Specifies the name of the group |
 
 Example:
@@ -23,7 +23,7 @@ Example:
             "x_domain": "NT AUTHORITY",
             "user_id": "SYSTEM",
             "account_login": "SYSTEM",
-            "x_group.id": "515",
+            "x_group.gid": "515",
             "x_group.name": "Domain local group",
             "x_group.domain": "internal.company.com"
         }
