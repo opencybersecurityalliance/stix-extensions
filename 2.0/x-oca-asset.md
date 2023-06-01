@@ -9,10 +9,10 @@ While `x-oca-asset` specifies the host on which the associated event occurred, i
 
 | property name | type | description |
 |--|--|--|
-| type | `string` | x-oca-asset |
+| type (required) | `string` | x-oca-asset |
 | extensions | `dictionary` | Specifies any extensions of the object, as a dictionary. |
 | device_id | `string` | The ID of the device. |
-|hostname|`string`|name of this host|
+|hostname (required)|`string`|name of this host|
 |ip_refs|`list` of type `object-ref`| references the ip addresses related to this host. must be `ipv4-addr` or `ipv6-addr`|
 |mac_refs|`list` of type `object-ref`| references the mac addresses related to this host. must be of type `mac-addr`|
 | os_ref | `object-ref` | Specifies the operating system of the asset, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
