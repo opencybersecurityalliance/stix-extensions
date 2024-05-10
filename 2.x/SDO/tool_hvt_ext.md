@@ -13,8 +13,7 @@ target. This enables threat-informed leaders and cyber risk personnel to
 assess and quantify cyber risks associated with targeted software,
 allowing for the development of more precise defensive strategies.
 
-
-    High Value Target is an open concept for the community to use. More information about the High Value Target concept is available at https://www.highvaluetarget.org/
+High Value Target is an open concept for the community to use. More information about the High Value Target concept is available at [https://www.highvaluetarget.org](https://www.highvaluetarget.org/).
 
 An extension is added to the `tool` object to include High Value Target
 information. The key for this extension when used in the extensions
