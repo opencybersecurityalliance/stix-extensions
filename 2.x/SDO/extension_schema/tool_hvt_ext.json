@@ -31,14 +31,15 @@
                   },
                   "minItems": 1
                 },
-              "required": [
-                "extension_type"
-              ] 
-            }
-          },
-          "required": [
-            "extension-definition--fb58a27d-32d2-4b8d-9705-e3cfd2d3dcdf"
-          ]
+                "required": [
+                  "extension_type"
+                ]
+              }
+            },
+            "required": [
+              "extension-definition--fb58a27d-32d2-4b8d-9705-e3cfd2d3dcdf"
+            ]
+          }
         }
       }
     }
