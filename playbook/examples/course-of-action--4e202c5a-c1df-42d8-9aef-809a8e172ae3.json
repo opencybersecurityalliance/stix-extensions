@@ -1,0 +1,18 @@
+{
+    "type": "course-of-action",
+    "spec_version": "2.1",
+    "id": "course-of-action--4e202c5a-c1df-42d8-9aef-809a8e172ae3",
+    "created": "2022-03-31T13:00:00.000Z",
+    "modified": "2024-05-16T12:44:08.273Z",
+    "name": "Quarantine and remediate",
+    "description": "Remediate by quarantining and performing analyst guided steps.",
+    "extensions": {
+        "extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd": {
+            "extension_type": "property-extension",
+            "playbooks": {
+                "x-oca-playbook--9880df48-09a7-4e99-8070-0db8f4c946d0": "application/cacao+json",
+                "x-oca-playbook--32f52089-9943-4231-bba3-5c02ba654755": "BPMN"
+            }
+        }
+    }
+}
