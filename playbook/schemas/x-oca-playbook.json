@@ -87,7 +87,7 @@
                 },
                 "playbook_bin": {
                     "type": "string",
-                    "description": "The entire playbook encoded in base64. \n\nThis property allows sharing and retrieving entire playbooks. \n\nThis property MUST NOT be present if the playbook_url property is populated."
+                    "description": "The entire playbook encoded in base64. \n\nThis property allows sharing and retrieving entire playbooks. \n\nThis property MUST NOT be present if the playbook_url property is populated. \n\nAs playbooks can become quite large, implementers MAY decide to use the playbook_url property to support lightweight message exchange."
                 },
                 "playbook_url": {
                     "type": "string",

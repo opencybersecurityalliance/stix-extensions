@@ -8,6 +8,6 @@
     "name": "x-oca-coa-playbook-ext Extension Definition",
     "description": "This schema extends the Course of Action SDO with playbook references.",
     "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-coa-playbook-ext.json",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "extension_types": ["property-extension"]
 }
