@@ -53,19 +53,17 @@ An open vocabulary for the playbook_type field of a playbook object.
 
 ```
 {
-  "type": "extension-definition",
-  "spec_version": "2.1",
-  "id": "extension-definition--809C4D84-7A6E-4039-97B4-DA9FEA03FCF9",
-  "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
-  "created": "2022-03-31T13:00:00.000Z",
-  "modified": "2022-03-31T13:00:00.000Z",
-  "name": "x-oca-playbook Extension Definition",
-  "description": "This schema creates a new object type called x-oca-playbook.",
-  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/playbook.json",
-  "version": "1.0.0",
-  "extension_types": [
-    "new-sdo"
-  ]
+    "type": "extension-definition",
+    "spec_version": "2.1",
+    "id": "extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9",
+    "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+    "created": "2022-03-31T13:00:00.000Z",
+    "modified": "2024-05-16T12:44:08.273Z",
+    "name": "x-oca-playbook Extension Definition",
+    "description": "This definition introduces a new object type, x-oca-playbook, for sharing security playbooks.",
+    "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-playbook.json",
+    "version": "4.0.0",
+    "extension_types": ["new-sdo"]
 }
 ```
 
