@@ -49,17 +49,6 @@ An open vocabulary for the playbook_type field of a playbook object.
 | recovery | As described in [NIST.SP.800-61r2]. |
 | attack | A playbook that is primarily focused on the orchestration steps required to execute a penetration test or attack simulation to test or verify security controls or identify vulnerabilities within an organization’s environment. |
 
-## Playbook Abstraction Vocabulary
-
-Vocabulary Name: `playbook-abstraction-ov`
-
-An open vocabulary for the playbook_abstraction field of a playbook object.
-
-| value |  description |
-|--|--|
-| executable | An executable playbook is intended to be immediately actionable in an organization’s security infrastructure without requiring modification or updates to the workflow and commands. |
-| template | A playbook template provides descriptions of actions related to a particular security incident, malware, vulnerability or other security operation. A template playbook will not be immediately executable by a receiving organization but may inform their own executable playbook for their specific environment or organization. |
-
 ## Extension Definition
 
 ```
