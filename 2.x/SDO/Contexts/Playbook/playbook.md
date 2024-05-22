@@ -15,5 +15,5 @@ Playbooks uses the following extensions (links to their schemas are provided):
 
 # References
 
-[CACAO-Security-Playbooks-v2.0]
+[CACAO-Security-Playbooks-v2.0]\
 CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
