@@ -37,7 +37,7 @@ The playbook-type-ov open vocabulary in this specification is based on [CACAO-Se
 
 | vocabulary value | description |
 |--|--|
-| prevention | A playbook that is primarily focused on the orchestration steps required to prevent a known or expected security event, incident, or threat from occurring. Prevention playbooks are often designed and deployed as part of best practices to safeguard organizations from known and perceived threats and behaviors associated with suspicious activity. For example, a prevention playbook can contain the specific actions that need to be deployed on certain systems to prevent a new attack or campaign. [CACAO-Security-Playbooks] |
+| prevention | A playbook that is primarily focused on the orchestration steps required to prevent a known or expected security event, incident, or threat from occurring. Prevention playbooks are often designed and deployed as part of best practices to safeguard organizations from known and perceived threats and behaviors associated with suspicious activity. For example, a prevention playbook can contain the specific actions that need to be deployed on certain systems to prevent a new attack or campaign. [CACAO-Security-Playbooks-v2.0] |
 | notification | A playbook that is primarily focused on the orchestration steps required to notify and disseminate information and other playbooks about a security event, incident, or threat. For example, a notification playbook can be used to notify multiple entities about a new attack or campaign and disseminate information or playbooks to deal with it as quickly as possible. [CACAO-Security-Playbooks-v2.0] |
 | detection | A playbook that is primarily focused on the orchestration steps required to detect a known security event, known or expected security-relevant activity, or for threat hunting. For example, a detection playbook can contain the actions needed to help organizations detect a specific attack or campaign. [CACAO-Security-Playbooks-v2.0] |
 | engagement | A playbook that is primarily focused on the orchestration steps required to engage in denial, deception, strategic planning, and analysis activity to support adversary engagement. Whereas attack playbooks leverage actions against known defenders to test an environment, engagement playbooks define actions and countermeasures against adversaries to increase their cost to operate and decrease the value of their operations. For example, an engagement playbook can contain the actions needed to provide misinformation about data or systems to decrease the value an adversary places on the assets, or it can contain the actions needed to disrupt network access to increase the adversary’s operational costs. [CACAO-Security-Playbooks-v2.0] |
@@ -125,3 +125,11 @@ The playbook-type-ov open vocabulary in this specification is based on [CACAO-Se
   }
 }
 ```
+
+## References
+
+[CACAO-Security-Playbooks-v2.0]\
+CACAO Security Playbooks Version 2.0. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
+
+[STIX-v2.1]\
+STIX Version 2.1. Edited by Bret Jordan, Rich Piazza, and Trey Darley. 10 June 2021. OASIS Standard. https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html. Latest stage: https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html.
