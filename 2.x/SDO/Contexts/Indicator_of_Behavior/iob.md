@@ -15,3 +15,6 @@ IOB uses the following extensions (links to their schemas are provided):
 * [x-oca-behavior](../../extension_schema/behavior.json)
 * [x-oca-detection](../../extension_schema/detection.json)
 * [x-oca-detector](../../extension_schema/detector.json)
+* [extended-network-traffic](../../SCO/extension_schema/extended-network-traffic.json)
+* [extended-process](../../SCO/extension_schema/extended-process.json)
+* [extended-windows-registry-key](../../SCO/extension_schema/extended-windows-registry-key.json)
