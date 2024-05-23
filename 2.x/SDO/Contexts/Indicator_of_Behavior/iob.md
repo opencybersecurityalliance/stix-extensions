@@ -18,3 +18,4 @@ IOB uses the following extensions (links to their schemas are provided):
 * [extended-network-traffic](../../SCO/extension_schema/extended-network-traffic.json)
 * [extended-process](../../SCO/extension_schema/extended-process.json)
 * [extended-windows-registry-key](../../SCO/extension_schema/extended-windows-registry-key.json)
+* [x-oca-tool-hvt-ext](../../extension_schema/x-oca-tool-hvt-ext.json)
