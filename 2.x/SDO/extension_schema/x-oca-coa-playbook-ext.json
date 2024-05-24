@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-coa-playbook-ext.json",
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/SDO/extension_schema/x-oca-coa-playbook-ext.json",
   "$schema": "http://json-schema.org/draft/2020-12/schema#",
   "title": "x-oca-coa-playbook-ext",
   "description": "A property extension for the Course of Action SDO for sharing automated courses of action (i.e., orchestration workflows or playbooks).",

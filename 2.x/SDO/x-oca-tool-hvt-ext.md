@@ -1,4 +1,4 @@
-## High Value Target Tool extension
+## x-oca-tool-hvt-ext
 
 High Value Targets (HVTs) are applications, their underlying information
 systems, and data for which unauthorized access, use, disclosure,

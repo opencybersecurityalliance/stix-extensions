@@ -1,7 +1,7 @@
 {
-  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/SDO/extension_schema/tool_hvt_ext.json",
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/SDO/extension_schema/x-oca-tool-hvt-ext.json",
   "$schema": "http://json-schema.org/draft/2020-12/schema#",
-  "title": "x-oca-tool-hvt-ext.json",
+  "title": "x-oca-tool-hvt-ext",
   "description": "Tools are legitimate software that can be used by threat actors to perform attacks.",
   "type": "object",
   "allOf": [
