@@ -1,0 +1,498 @@
+= Playbook SDO and Course of Action Property Extensions Version 4.0 for STIX™ Version 2.1
+
+*17 May 2024*
+
+*Editors:* +
+OCA IOB Sub-Project Security Playbooks Working Group
+
+
+*Additional artifacts:* +
+This prose specification is one component of a Work Product that also includes: 
+
+* _STIX Version 2.1_. Edited by Bret Jordan, Rich Piazza, and Trey Darley. 10 June 2021. OASIS Standard. https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html. Latest stage: https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html.
+
+*Related work:* +
+This specification replaces or supersedes: 
+
+* Previous implementations of Playbook and extended Course of Action SDOs developed by the Open Cybersecurity Alliance Indicators of Behavior Sub-Project reference implementations (https://github.com/opencybersecurityalliance/oca-iob/tree/main/apl_reference_implementation_bundle)
+
+*Abstract:* +
+The current STIX 2.1 Course of Action object type supports basic use cases such as sharing prose courses of action. This specification extends STIX 2.1 with one new SDO and a property extension for the Course of Action SDO for sharing automated courses of action (i.e., orchestration workflows or playbooks).
+
+*Key words:* +
+The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*", "*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*", "*NOT RECOMMENDED*", "*MAY*", and "*OPTIONAL*" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+
+*Citation format:* +
+When referencing this specification, the following citation format should be used: +
+*[STIX2.1-COA-Playbook-Extension]*
+_Playbook SDO and Course of Action Property Extensions Version 4.0 for STIX™ Version 2.1_. Edited by OCA IOB Sub-Project Security Playbooks Working Group. 17 May 2024. OASIS Open Cyber Security Alliance Specification. Latest stage: https://docs.google.com/document/d/1mjFhYK_fLKzKK9X5qstoZkRF7GNTLiwM/
+
+== Table of Contents
+
+link:++#course-of-action-sdo---property-extension++[1. Course of Action SDO - Property Extension 3]
+
+____
+link:#properties[1.1 Properties 3]
+
+link:#extension-definition[1.2 Extension Definition 3]
+
+link:#example[1.3 Example 4]
+____
+
+link:#playbook-sdo[2. Playbook SDO 4]
+
+____
+link:#properties-1[2.1 Properties 4]
+
+link:#relationships[2.2. Relationships 9]
+
+link:#extension-definition-1[2.3 Extension Definition 9]
+
+link:#example-1[2.4 Example 10]
+____
+
+link:#vocabularies[3. Vocabularies 11]
+
+____
+link:#playbook-type-vocabulary[3.1 Playbook Type Vocabulary 11]
+____
+
+link:#appendix-a.-references[Appendix A. References 13]
+
+____
+link:#a1.-normative-references[A1. Normative References 13]
+
+link:#a2.-informative-references[A2. Informative References 13]
+____
+
+link:#_heading=[Appendix B. Acknowledgements 13]
+
+link:#appendix-c.-revision-history[Appendix C. Revision History 14]
+
+== 1. Course of Action SDO - Property Extension
+
+A property extension for the Course of Action SDO to include references to related playbooks. The key for this extension, when used in the extensions dictionary, *MUST* be extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd.
+
+=== 1.1 Properties
+
+[width="100%",cols="34%,16%,50%",options="header",]
+|===
+|Property Name |Type |Description
+|*extension_type* (required) |string |The value of this property *MUST* be property-extension.
+a|
+*playbooks*
+(required)
+|dictionary a|
+The dictionary key is the UUID of a STIX 2.1 playbook object (as defined in section 2). The dictionary value is the playbook format (e.g., application/cacao+json, bpmn).
+
+When possible, this value *SHOULD* come from the values defined in the Template column of the IANA media type registry *[Media Types]*. For example, if a playbook is provided as an image in _png_ format, the value following the IANA media type registry MUST be "_image/png_". Another example is CACAO security playbooks, where in **[CACAO-Security-Playbooks-v2.0] **Appendix C. IANA Considerations, the following media type is defined: "_application/cacao+json_"
+
+|===
+
+=== 1.2 Extension Definition
+[source, json]
+----
+{
+    "type": "extension-definition",
+    "spec_version": "2.1",
+    "id": "extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd",
+    "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+    "created": "2022-03-31T13:00:00.000Z",
+    "modified": "2024-05-16T12:44:08.273Z",
+    "name": "x-oca-coa-playbook-ext Extension Definition",
+    "description": "This definition extends the COA SDO with playbook references.",
+    "schema":
+    "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-coa-playbook-ext.json",
+    "version": "4.0.0",
+    "extension_types": ["property-extension"]
+}
+----
+=== 1.3 Example 
+
+*Example 1.1*
+
+_Remediate by quarantining and performing analyst-guided steps._
+
+[source, json]
+----
+{
+    "type": "course-of-action",
+    "spec_version": "2.1",
+    "id": "course-of-action--4e202c5a-c1df-42d8-9aef-809a8e172ae3",
+    "created": "2022-03-31T13:00:00.000Z",
+    "modified": "2024-05-16T12:44:08.273Z",
+    "name": "Quarantine and remediate",
+    "description": "Remediate by quarantining and performing analyst-guided steps",
+    "extensions": {
+        "extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd": {
+            "extension_type": "property-extension",
+            "playbooks": {
+                "x-oca-playbook--9880df48-09a7-4e99-8070-0db8f4c946d0":
+                "application/cacao+json",
+                "x-oca-playbook--32f52089-9943-4231-bba3-5c02ba654755": "BPMN"
+            }
+        }
+    }
+}
+----
+== 2. Playbook SDO
+
+The properties comprising the Playbook SDO are defined below. The key for this extension, when used in the extensions dictionary, *MUST* be extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9.
+
+=== 2.1 Properties
+
+[width="100%",cols="35%,15%,50%",]
+|===
+3+|*Required Common Properties*
+3+|type, spec_version, id, created, modified 
+3+|*Optional Common Properties* 
+3+|created_by_ref, revoked, labels, confidence, lang, external_references, object_marking_refs, granular_markings, extensions
+3+|*Not Applicable Common Properties*
+3+|defanged
+3+|*Playbook Specific Properties*
+3+|playbook_id, name, description, playbook_creator, playbook_creation_time, playbook_modification_time, organization_type, playbook_format, is_playbook_template, playbook_type, playbook_impact, playbook_severity, playbook_priority, playbook_bin, playbook_url, playbook_hashes
+|*Property Name* |*Type* |*Description*
+|*type* (required) |string |The value of this property *MUST* be x-oca-playbook.
+a|
+*playbook_id*
+(optional)
+|string a|
+A value that identifies the playbook. If the playbook (itself) includes an identifier, then *playbook_id SHOULD* use the same identifier for correlation purposes. It is recommended to use either UUIDv4 or deterministic UUIDv5 identifiers —if supported.
+
+|*name* (required) |string |The name used to identify the playbook.
+
+a|
+*description*
+(optional)
+
+|string |An explanation, details, and more context about what this playbook does and tries to accomplish.
+
+a|
+*playbook_creator*
+(optional)
+
+|identifier a|
+The identifier of SDO identity that created the playbook.
+
+If this object references a CACAO v2.0 playbook, then the value of this property *SHOULD* match the value of the *created_by* property in the CACAO playbook.
+
+a|
+*playbook_creation_time*
+(optional)
+
+|timestamp a|
+The time at which the playbook was originally created.
+
+If this object references a CACAO v2.0 playbook, then the value of this property *SHOULD* match the value of the *created* property in the CACAO playbook.
+
+a|
+*playbook_modification_time*
+(optional)
+
+|timestamp a|
+The time at which the playbook was last modified.
+
+If this object references a CACAO v2.0 playbook, then the value of this property *SHOULD* match the value of the *modified* property in the CACAO playbook.
+
+a|
+*organization_type*
+(optional)
+
+|list of type open-vocab a|
+The type of organization that the playbook is intended for.
+
+The value for this property *SHOULD* come from the industry-sector-ov open vocabulary as defined in *[STIX-v2.1]*. If this object references a CACAO v2.0 playbook, then the value of this property *SHOULD* match the value of the (if populated) *industry_sectors* property in the CACAO playbook.
+
+Note that the *[CACAO-Security-Playbooks-v2.0]* extends the industry-sector-ov of *[STIX-v2.1]* with more sectors.
+
+a|
+*playbook_format*
+(optional)
+
+|string a|
+The standard / format / notation the playbook conforms to (e.g., cacao, bpmn, ansible), or when not available, its encoding (e.g., .png or .pptx).
+
+When possible, this value *SHOULD* come from the values defined in the Template column of the IANA media type registry *[Media Types]*. For example, if a playbook is provided as an image in _png_ format, the value following the IANA media type registry should be "_image/png_". Another example is CACAO security playbooks, where in **[CACAO-Security-Playbooks-v2.0] **Appendix C. IANA Considerations, the following media type is defined: "_application/cacao+json_".
+
+a|
+*is_playbook_template*
+(required)
+
+|boolean a|
+This property verifies whether the playbook is a template or includes details for machine execution.
+
+A playbook could abstractly define and describe a structured process to be performed by cybersecurity personnel following up on a specific incident type or could detail actions up to the command level for an orchestrator to consume and execute it automatically by integrating and interacting with a set of systems and system components. Generally, playbooks for exchange will be vetted for confidential information and infrastructure details. Organizations and sharing parties and communities *MAY* define rules for what exactly constitutes a template playbook.
+
+a|
+*playbook_type*
+(optional)
+
+|list of type open-vocab a|
+A list of playbook types that specifies the operational roles this playbook addresses.
+
+The value for this property *SHOULD* come from the playbook-type-ov open vocabulary. If this object references a CACAO v2.0 playbook, then the value of this property *SHOULD* match the value of the (if populated) *playbook_types* property in the CACAO playbook.
+
+a|
+*playbook_impact*
+(optional)
+
+|integer a|
+A number (𝕎 - whole number) from 0 to 100 that represents the potential impact (as determined subjectively by the producer) the execution of the playbook might have on the organization and its infrastructure.
+
+Organizations and sharing parties and communities *MAY* establish clear rules for assigning this property.
+
+If specified, the value of this property *MUST* be between 0 and 100. When left blank, this means unspecified. A value of 0 means specifically undefined or benign. Impact values range from 1, the lowest impact, to a
+value of 100, the highest. 
+
+Note that CACAO v2.0 playbooks also share the same property (*impact*) but producers of this SDO *MAY* assign different impact values based on their own rules.
+
+a|
+*playbook_severity*
+(optional)
+
+|integer a|
+A number (𝕎 - whole number) that represents the seriousness of the conditions that this playbook addresses. This is highly dependent on whether the playbook is a response to an incident (in which case the severity could be mapped to an incident category defined in some solution), a response to a threat (in which case the severity would likely be mapped to the severity of the threat faced or captured by threat intelligence), or a response to something else.
+
+Organizations and sharing parties and communities *MAY* establish clear rules for assigning this property.
+
+If specified, the value of this property *MUST* be between 0 and 100.
+
+When left blank, this means unspecified. A value of 0 means specifically undefined. Values range from 1, the lowest severity, to 100, the highest.
+
+Note that CACAO v2.0 playbooks also share the same property (*severity*) but producers of this SDO *MAY* assign different impact values based on their own rules.
+
+a|
+*playbook_priority*
+(optional)
+
+|integer a|
+A number (𝕎 - whole number) that represents the priority of this playbook relative to other defined playbooks.
+
+Priority in this context is a subjective assessment; thus, organizations, sharing parties, and communities of playbooks *MAY* define rules on how priority should be assessed and assigned. This specification does not address how this assessment is determined. This property is primarily to allow such usage without requiring the addition of a custom property for such practices. This property can support different use cases and requirements of a producing or consuming entity. For example, two playbook objects focused on the same malware could use the priority property to indicate that the execution of a remediation playbook is preferred compared to a mitigation playbook.
+
+If specified, the value of this property *MUST* be between 0 and 100.
+
+When left blank, this means unspecified. A value of 0 means specifically undefined. Values range from 1, the highest priority, to a value of 100, the lowest.
+
+The values of 1-100 in this property are inverted from *playbook_severity* and *playbook_impact* based on how the concept of priority is used today. For example, in a SOC, a P1 ticket is a higher priority than a P4 ticket.
+
+Note that CACAO playbooks also share the same property (*priority*), but producers of this SDO *MAY* assign different impact values based on their own rules.
+
+a|
+*playbook_bin*
+(optional)
+
+|binary a|
+The entire playbook encoded in base64.
+
+This property allows the sharing and retrieval of entire playbooks.
+
+This property *MUST NOT* be present if the *playbook_url* property is populated.
+
+As playbooks can become quite large, implementers *MAY* decide to use the *playbook_url* property to support lightweight message exchange.
+
+a|
+*playbook_url*
+(optional)
+
+|string a|
+The value of this property *MUST* be a valid URL that resolves to a non-encoded playbook (playbook in its native format).
+
+This property *MUST NOT* be present if the *playbook_bin* property is populated.
+
+|*playbook_hashes* (optional) |hashes a| 
+Specifies a dictionary of hashes for the playbook itself. The hashes *MUST* be calculated by using the playbook in its native format.
+
+This property can be used to ensure the integrity of the playbook retrieved from the *playbook_url* property.
+
+This property *MUST* be present when the *playbook_url* property is present.
+
+Dictionary keys *MUST* come from the hash-algorithm-ov open vocabulary.
+
+|===
+
+=== 2.2. Relationships
+
+This specification does not define any specific relationships for the Playbook SDO. However, implementers can use the STIX 2.1 common relationships to associate a playbook with other objects. As a best practice, implementers should use the COA extension and its already-defined relationships to connect their playbooks with threat intelligence.
+
+[width="100%",cols="40%,60%",]
+|===
+2+|*Embedded Relationships*
+|created_by_ref | identifier (of type identity)
+|object_marking_refs | list of type identifier (of type marking-definition)
+2+|*Common Relationships*
+2+|duplicate-of, derived-from, related-to
+|===
+
+=== 2.3 Extension Definition
+[source, json]
+----
+{
+    "type": "extension-definition",
+    "spec_version": "2.1",
+    "id": "extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9",
+    "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+    "created": "2022-03-31T13:00:00.000Z",
+    "modified": "2024-05-16T12:44:08.273Z",
+    "name": "x-oca-playbook Extension Definition",
+    "description": "This definition introduces a new object type, x-oca-playbook, for sharing security playbooks.",
+    "schema":
+    "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-playbook.json",
+    "version": "4.0.0",
+    "extension_types": ["new-sdo"]
+}
+----
+=== 2.4 Example
+
+_Remediate by quarantining and performing analyst-guided steps.
+Optionally checks configuration management and attempts to automatically
+rebuild if necessary._
+
+*Example 2.1* +
+_The SDO pertains to a CACAO Version 2.0 playbook._
+[source, json]
+----
+{
+    "type": "x-oca-playbook",
+    "spec_version": "2.1",
+    "id": "x-oca-playbook--9880df48-09a7-4e99-8070-0db8f4c946d0",
+    "created": "2022-03-31T13:00:00.000Z",
+    "modified": "2024-05-16T12:44:08.273Z",
+    "name": "Quarantine and remediate",
+    "description": "Remediate by quarantining and performing analyst-guided steps. Optionally checks configuration management and attempts to automatically rebuild if necessary.",
+    "playbook_id": "playbook--767d859e-7387-4e0c-95c0-458ca369486f",
+    "playbook_format": "application/cacao+json",
+    "playbook_type": ["remediation"],
+    "playbook_bin": "...",
+    "is_playbook_template": true,
+    "playbook_creation_time": "2022-03-31T13:00:00.000Z",
+    "playbook_modification_time": "2022-03-31T13:00:00.000Z",
+    "revoked": false,
+    "playbook_creator": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+    "extensions": {
+        "extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9": {
+            "extension_type": "new-sdo"
+        }
+    }
+}
+----
+*Example 2.2* +
+_The SDO pertains to a BPMN playbook._
+
+[source, json]
+----
+{
+    "type": "x-oca-playbook",
+    "spec_version": "2.1",
+    "id": "x-oca-playbook--32f52089-9943-4231-bba3-5c02ba654755",
+    "created": "2022-03-31T13:00:00.000Z",
+    "modified": "2024-05-16T12:44:08.273Z",
+    "name": "Quarantine and remediate",
+    "playbook_id": "33624770-3afe-4f63-8e63-f00915162f01",
+    "description": "Remediate by quarantining and performing analyst-guided steps. Optionally checks configuration management and attempts to automatically rebuild if necessary.",
+    "playbook_format": "BPMN",
+    "playbook_type": ["remediation"],
+    "playbook_bin": "...",
+    "is_playbook_template": true,
+    "playbook_creation_time": "2022-03-31T13:00:00.000Z",
+    "playbook_modification_time": "2022-03-31T13:00:00.000Z",
+    "revoked": false,
+    "playbook_creator": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+    "extensions": {
+        "extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9": {
+        "   extension_type": "new-sdo"
+        }
+    }
+}
+----
+== 3. Vocabularies
+
+=== 3.1 Playbook Type Vocabulary
+
+*Vocabulary Name*: playbook-type-ov
+
+The playbook-type-ov open vocabulary in this specification is based on
+*[CACAO-Security-Playbooks-v2.0]*.
+
+[width="100%",cols="21%,79%",options="header",]
+|===
+|*Vocabulary Value* |*Description*
+|prevention |A playbook that is primarily focused on the orchestration steps required to prevent a known or expected security event, incident, or threat from occurring. Prevention playbooks are often designed and
+deployed as part of best practices to safeguard organizations from known and perceived threats and behaviors associated with suspicious activity. For example, a prevention playbook can contain the specific actions that
+need to be deployed on certain systems to prevent a new attack or campaign. *[CACAO-Security-Playbooks]*
+
+|notification |A playbook that is primarily focused on the orchestration steps required to notify and disseminate information and other playbooks about a security event, incident, or threat. For example, a notification playbook can be used to notify multiple entities about a new attack or campaign and disseminate information or playbooks to deal with it as quickly as possible. *[CACAO-Security-Playbooks-v2.0]*
+
+|detection |A playbook that is primarily focused on the orchestration steps required to detect a known security event, known or expected security-relevant activity, or for threat hunting. For example, a detection playbook can contain the actions needed to help organizations detect a specific attack or campaign. *[CACAO-Security-Playbooks-v2.0]*
+
+|engagement |A playbook that is primarily focused on the orchestration steps required to engage in denial, deception, strategic planning, and analysis activity to support adversary engagement. Whereas attack playbooks leverage actions against known defenders to test an environment, engagement playbooks define actions and countermeasures against adversaries to increase their cost to operate and decrease the value of their operations. For example, an engagement playbook can contain the actions needed to provide misinformation about data or systems to decrease the value an adversary places on the assets, or it can contain the actions needed to disrupt network access to increase the adversary's operational costs. *[CACAO-Security-Playbooks-v2.0]*
+
+|investigation |A playbook that is primarily focused on the orchestration steps required to investigate what affects a security event, incident, or other security-relevant activity has caused. Investigation playbooks will likely inform other subsequent actions upon completion of the investigation. For example, an investigation playbook can contain the actions needed to check various systems for suspicious activity. *[CACAO-Security-Playbooks--v2.0]*
+
+|mitigation |A playbook that is primarily focused on the orchestration steps required to mitigate a security event or incident that has occurred when remediation is not initially possible. Organizations often choose to mitigate a security event or incident until they can actually remediate it. Mitigation playbooks are designed to reduce or limit the impact of suspicious or confirmed malicious activity. For example, a mitigation playbook can contain the specific actions to be used to quarantine affected users/devices/applications from the network temporarily to prevent additional problems. Mitigation usually precedes remediation, after which the mitigation actions are reversed. *[CACAO-Security-Playbooks-v2.0]*
+
+|remediation |A playbook that is primarily focused on the orchestration steps required to remediate, resolve, or fix the resultant state of a security event or incident and return the system, device, or network back to a nominal operating state. Remediation playbooks can fix affected assets by selectively correcting problems due to malicious activity by reverting the system or network to a known good state. For example, a remediation playbook can contain the specific actions that need to be deployed to ensure that a system or device is no longer infected with some malware. If mitigation steps were previously applied, they might need to be undone during remediation; however, this is all implementation-specific and dependent on how the playbooks were created and executed. *[CACAO-Security-Playbooks-v2.0]*
+
+|attack |A playbook that is primarily focused on the orchestration steps required to execute a penetration test or perform adversarial emulation. These playbooks can help an organization test and verify the security controls in a specific environment and potentially identify vulnerabilities or other changes necessary to improve defensive posture within that environment. For example, an attack playbook can contain the specific actions that a red-team should perform that are within the scope and rules of engagement for a specific penetration test. An attack playbook may also be used to capture, in a structured way, the sequence of an adversary's behavior as described in a text-based cyber threat intelligence (CTI) report. *[CACAO-Security-Playbooks-v2.0]*
+|===
+
+== Appendix A. References
+
+=== A1. Normative References
+
+*[STIX-v2.1]* +
+_STIX Version 2.1_. Edited by Bret Jordan, Rich Piazza, and Trey Darley.
+10 June 2021. OASIS Standard. https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html.
+Latest stage: https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html.
+
+*[RFC4122]* + 
+Leach, P., Mealling, M., and R. Salz, "A Universally Unique IDentifier (UUID) URN Namespace", RFC 4122, DOI 10.17487/RFC4122, July 2005, http://www.rfc-editor.org/info/rfc4122.
+
+*[RFC8785]* +
+Rundgren, A., Jordan, B., and S. Erdtman, "JSON Canonicalization Scheme (JCS)", RFC 8785, DOI 10.17487/RFC8785, June 2020, https://www.rfc-editor.org/info/rfc8785.
+
+*[Media Types]* +
+N. Freed, M. Kucherawy, M. Baker and B. Hoehrmann, "Media Types", IANA, December 2016. [Online]. Available: http://www.iana.org/assignments/media-types/media-types.xhtml.
+
+=== A2. Informative References
+
+*[CACAO-Security-Playbooks-v2.0]* +
+_CACAO Security Playbooks Version 2.0_. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
+
+== Appendix B. Acknowledgements
+
+*Primary Editor* +
+Vasileios Mavroeidis, University of Oslo
+
+*Contributors* +
+Substantial contributions to this specification from the following individuals are gratefully acknowledged.
+
+OCA IOB Sub-Project Security Playbooks Working Group
+
+* Ali Shahegh, Johns Hopkins University Applied Physics Laboratory
+* Charles Frick, IOB Sub-Project Chair, Johns Hopkins University Applied
+Physics Laboratory
+* David Bizeul, Sekoia.io
+* Emma Lubes, Johns Hopkins University Applied Physics Laboratory
+* Hannah Ripley, Johns Hopkins University Applied Physics Laboratory
+* Jason O'Connor, Johns Hopkins University Applied Physics Laboratory
+* Kurt Karolenko, Johns Hopkins University Applied Physics Laboratory
+* Mateusz Zych, Cyentific AS
+* Tim Zhan, Johns Hopkins University Applied Physics Laboratory
+* Vasileios Mavroeidis, University of Oslo
+
+*Other Acknowledgments* +
+This work has been partially supported by the EU projects PHOENI2X (agreement no. 101070586), SYNAPSE (agreement no. 101120853), NG-SOC (agreement no.101145874), and CY-TRUST (agreement no. 101128017). Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.
+
+== Appendix C. Revision History
+
+[width="100%",cols="14%,14%,25%,47%",options="header",]
+|===
+|Revision |Date |Editor |Changes Made
+| |2024-05-17 |Vasileios Mavroeidis a|
+* Language enhancements in the descriptions of multiple properties to resolve ambiguities and recommend best practices on their use.
+* The NIST 800-61r2 terms that were part of the playbook-type-ov have been removed as they considerably overlap with the terms of CACAO version 2.
+* The key:value usage of the “playbooks” property in the COA extension has been reversed to allow reference of more than one playbook of the same format.
+* Three new properties were introduced in the Playbook SDO, namely, is_playbook_template, playbook_url, and playbook_hashes.
+
+|===
