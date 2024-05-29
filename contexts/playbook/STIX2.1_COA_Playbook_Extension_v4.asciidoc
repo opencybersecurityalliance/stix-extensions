@@ -102,7 +102,7 @@ When possible, this value *SHOULD* come from the values defined in the Template 
     "name": "x-oca-coa-playbook-ext Extension Definition",
     "description": "This definition extends the COA SDO with playbook references.",
     "schema":
-    "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-coa-playbook-ext.json",
+    "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-coa-playbook-ext.json",
     "version": "4.0.0",
     "extension_types": ["property-extension"]
 }
@@ -337,7 +337,7 @@ This specification does not define any specific relationships for the Playbook S
     "name": "x-oca-playbook Extension Definition",
     "description": "This definition introduces a new object type, x-oca-playbook, for sharing security playbooks.",
     "schema":
-    "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-playbook.json",
+    "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-playbook.json",
     "version": "4.0.0",
     "extension_types": ["new-sdo"]
 }

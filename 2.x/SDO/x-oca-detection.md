@@ -25,7 +25,7 @@ common mail clients and web browsers, respectively.
   "modified": "2022-03-31T13:00:00.000Z",
   "name": "x-oca-detection Extension Definition",
   "description": "This schema creates a new object type called detection, which contain queries or other actionable information that can identify an event or behavior.",
-  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/detection.json",
+  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-detection.json",
   "version": "1.0.0",
   "extension_types": [
     "new-sdo"

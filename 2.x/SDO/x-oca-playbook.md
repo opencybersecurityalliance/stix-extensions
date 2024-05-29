@@ -58,7 +58,7 @@ The playbook-type-ov open vocabulary in this specification is based on [CACAO-Se
     "modified": "2024-05-16T12:44:08.273Z",
     "name": "x-oca-playbook Extension Definition",
     "description": "This definition introduces a new object type, x-oca-playbook, for sharing security playbooks.",
-    "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/playbook/schemas/x-oca-playbook.json",
+    "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-playbook.json",
     "version": "4.0.0",
     "extension_types": ["new-sdo"]
 }
