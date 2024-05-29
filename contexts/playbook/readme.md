@@ -13,9 +13,9 @@ x-oca-playbook SDOs may then be referenced in the extended STIX Course of Action
 
 Adds an extension to the STIX Course of Action object to include references to related playbooks.
 
-**Extension Definition:** [extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd.json](./../../extension-definitions/extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd.json)
+**Extension Definition:** [extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd.json](./../../2.x/extension-definitions/extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd.json)
 
-**Schema:** [x-oca-coa-playbook-ext.json](./../../schemas/x-oca-coa-playbook-ext.json)
+**Schema:** [x-oca-coa-playbook-ext.json](./../../2.x/schemas/x-oca-coa-playbook-ext.json)
 
 ### Example
 
@@ -25,9 +25,9 @@ Adds an extension to the STIX Course of Action object to include references to r
 
 The properties comprising the Playbook SDO are defined below.
 
-**Extension Definition:** [extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9.json](./../../extension-definitions/extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9.json)
+**Extension Definition:** [extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9.json](./../../2.x/extension-definitions/extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9.json)
 
-**Schema:** [x-oca-playbook.json](./../../schemas/x-oca-playbook.json)
+**Schema:** [x-oca-playbook.json](./../../2.x/schemas/x-oca-playbook.json)
 
 ### Examples
 
