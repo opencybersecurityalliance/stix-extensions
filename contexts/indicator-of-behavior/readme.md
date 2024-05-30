@@ -12,10 +12,10 @@ IOBs are patterns of behavior associated with malicious cyber activity. By under
 
 IOB uses the following extensions (links to their schemas are provided):
 
-* [x-oca-behavior](../../extension_schema/behavior.json)
-* [x-oca-detection](../../extension_schema/detection.json)
-* [x-oca-detector](../../extension_schema/detector.json)
-* [extended-network-traffic](../../SCO/extension_schema/extended-network-traffic.json)
-* [extended-process](../../SCO/extension_schema/extended-process.json)
-* [extended-windows-registry-key](../../SCO/extension_schema/extended-windows-registry-key.json)
-* [x-oca-tool-hvt-ext](../../extension_schema/x-oca-tool-hvt-ext.json)
+-   [x-oca-behavior](../../2.x/schemas/x-oca-behavior.json)
+-   [x-oca-detection](../../2.x/schemas/x-oca-detection.json)
+-   [x-oca-detector](../../2.x/schemas/x-oca-detector.json)
+-   [extended-network-traffic](../../2.x/schemas/extended-network-traffic.json)
+-   [extended-process](../../2.x/schemas/extended-process.json)
+-   [extended-windows-registry-key](../../2.x/schemas/extended-windows-registry-key.json)
+-   [x-oca-tool-hvt-ext](../../2.x/schemas/x-oca-tool-hvt-ext.json)

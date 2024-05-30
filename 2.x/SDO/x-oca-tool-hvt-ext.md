@@ -75,7 +75,7 @@ of high value target tools when weaponized by an adversary.
       "modified": "2022-03-31T13:00:00.000Z",
       "name": "High Value Target Tool Extension Definition",
       "description": "This schema extends the Tool SDO with High Value Target information.",
-      "schema": "TBD",
+      "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-tool-hvt-ext.json",
       "version": "1.0.0",
       "extension_types": [
         "property-extension"

@@ -44,7 +44,7 @@ An open vocabulary for the behavior_class field of a behavior object.
   "modified": "2022-03-31T13:00:00.000Z",
   "name": "x-oca-behavior Extension Definition",
   "description": "This schema creates a new object type called x-oca-behavior. x-oca-behavior objects describe higher-level functionality than can be described using SCOs.",
-  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/behavior.json",
+  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-behavior.json",
   "version": "1.0.0",
   "extension_types": [
     "new-sdo"

@@ -31,7 +31,7 @@ should be related to one or more Detection obects.
   "modified": "2023-05-01T12:00:00.000Z",
   "name": "x-oca-detector Extension Definition",
   "description": "This schema creates a new object type called detector, which describes software that is capable of performing detections.",
-  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/detector.json",
+  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-detector.json",
   "version": "1.0.0",
   "extension_types": [
     "new-sdo"
