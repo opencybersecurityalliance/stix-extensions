@@ -1,4 +1,6 @@
 = Playbook SDO and Course of Action Property Extensions Version 4.0 for STIX™ Version 2.1
+:toc: macro
+:toc-title: 
 
 *17 May 2024*
 
@@ -27,47 +29,9 @@ When referencing this specification, the following citation format should be use
 *[STIX2.1-COA-Playbook-Extension]*
 _Playbook SDO and Course of Action Property Extensions Version 4.0 for STIX™ Version 2.1_. Edited by OCA IOB Sub-Project Security Playbooks Working Group. 17 May 2024. OASIS Open Cyber Security Alliance Specification. Latest stage: https://docs.google.com/document/d/1mjFhYK_fLKzKK9X5qstoZkRF7GNTLiwM/
 
-== Table of Contents
-
-link:++#course-of-action-sdo---property-extension++[1. Course of Action SDO - Property Extension 3]
-
-____
-link:#properties[1.1 Properties 3]
-
-link:#extension-definition[1.2 Extension Definition 3]
-
-link:#example[1.3 Example 4]
-____
-
-link:#playbook-sdo[2. Playbook SDO 4]
-
-____
-link:#properties-1[2.1 Properties 4]
-
-link:#relationships[2.2. Relationships 9]
-
-link:#extension-definition-1[2.3 Extension Definition 9]
-
-link:#example-1[2.4 Example 10]
-____
-
-link:#vocabularies[3. Vocabularies 11]
-
-____
-link:#playbook-type-vocabulary[3.1 Playbook Type Vocabulary 11]
-____
-
-link:#appendix-a.-references[Appendix A. References 13]
-
-____
-link:#a1.-normative-references[A1. Normative References 13]
-
-link:#a2.-informative-references[A2. Informative References 13]
-____
-
-link:#_heading=[Appendix B. Acknowledgements 13]
-
-link:#appendix-c.-revision-history[Appendix C. Revision History 14]
+[discrete]
+== Table of Content
+toc::[]
 
 == 1. Course of Action SDO - Property Extension
 
