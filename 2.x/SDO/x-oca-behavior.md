@@ -6,18 +6,22 @@ an object more specific than an Attack Pattern, but more general than an SCO.
 For example, an Attack Pattern for spearphishing may refer to MITRE ATT&CK T1566.002 Spearphishing
 Link. A Behavior may be the mail client opening a web browser. The SCOs may be the processes
 involved.
-The `x-oca-behavior` implements this functionality.
+The `x-oca-behavior` SDO implements this functionality.
 
 | property name            | type                       | description
 |--------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type (required)          | `string`                   | MUST be the literal "x-oca-behavior" |
-| name (required)          | `string`                   | The name used to identify the Behavior. |
-| description              | `string`                   | Description of the Behavior. |
-| behavior_class           | `string`                   | The class of behavior. The value for this property SHOULD come from the behavior-class-ov open vocabulary. |
-| tactic                   | `string`                   | MITRE ATT&CK tactic of the Behavior. |
-| technique                | `string`                   | MITRE ATT&CK technique of the Behavior. |
-| first_seen               | `timestamp`                | The first_seen property represents the time that this behavior was first seen. The timestamp value MUST be precise to the nearest millisecond. |
-| platforms                | `dictionary`               | Platforms the Behavior was seen on. Each entry may list contextual data about the platform such as the OS and OS version number. |
+| **type** (required)          | `string`                   | MUST be the literal "x-oca-behavior" |
+| **id** (required) | `string` | A valid [stix-id](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_64yvzeku5a5c) based on`x-ibm-behavior` |
+| **spec** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
+| **created** (required) | `timestamp` | The date and time the object was created |
+| **modified** (optional) | `timestamp` | The date and time the object was modified |
+| **name** (required)          | `string`                   | The name used to identify the Behavior. |
+| **description**              | `string`                   | Description of the Behavior. |
+| **behavior_class**           | `string`                   | The class of behavior. The value for this property SHOULD come from the behavior-class-ov open vocabulary. |
+| **tactic**                   | `string`                   | MITRE ATT&CK tactic of the Behavior. |
+| **technique**                | `string`                   | MITRE ATT&CK technique of the Behavior. |
+| **first_seen**               | `timestamp`                | The first_seen property represents the time that this behavior was first seen. The timestamp value MUST be precise to the nearest millisecond. |
+| **platforms**                | `dictionary`               | Platforms the Behavior was seen on. Each entry may list contextual data about the platform such as the OS and OS version number. |
 
 ### Behavior Class Vocabulary
 
@@ -34,7 +38,7 @@ An open vocabulary for the behavior_class field of a behavior object.
 
 ## Extension Definition
 
-```
+```json
 {
   "type": "extension-definition",
   "spec_version": "2.1",
@@ -56,7 +60,7 @@ An open vocabulary for the behavior_class field of a behavior object.
 
 ### Mail Client Opens Browser Behavior
 
-```
+```json
 {
   "type": "x-oca-behavior",
   "spec_version": "2.1",
@@ -86,7 +90,7 @@ An open vocabulary for the behavior_class field of a behavior object.
 
 ### Registry Key Modified Behavior
 
-```
+```json
 {
   "type": "x-oca-behavior",
   "spec_version": "2.1",
