@@ -51,7 +51,7 @@ Use of references helps to hint the relevance of the data. For example a file cr
 
 ## Examples
 
-### An event indicating a network communication from an endpoint
+### 1-A: An event indicating a network communication from an endpoint
 
 network communication from the host `host1.exmaple.com` to url `https://example.com/download` performed by the `chrome.exe` process.
 
@@ -171,8 +171,182 @@ network communication from the host `host1.exmaple.com` to url `https://example.
     }
 ```
 
+### 1-B: A Stix 2.1 SDO x-oca-event indicating a network communication from an endpoint
 
-### An event indicating a file create from an endpoint
+network communication from the host `host1.exmaple.com` to url `https://example.com/download` performed by the `chrome.exe` process.
+
+In Stix v2.1, the Observed Data SDO gatherss any SCO's (Observables), while the Sighting SRO is used to combine these observations with appropriate SDO's, such as `x-oca-event` or `x-oca-asset`.
+
+```json
+[
+  {
+    "id": "observed-data--7805aca6-b29d-4e1a-86b2-ba4eb1110051",
+    "type": "observed-data",
+    "spec_version": "2.1",
+    "created": "2022-07-15T18:42:31.000Z",
+    "modified": "2022-07-15T18:42:31.000Z",
+    "created_by_ref": "identity--ab920cb1-239b-4371-b7f6-66f634de9927",
+    "first_observed": "2022-07-15T18:42:31.000Z",
+    "last_observed": "2022-07-15T18:42:31.000Z",
+    "number_observed": 1,
+    "object_refs": [
+      "domain-name--bedb4899-d24b-5401-bc86-8f6b4cc18ec7",
+      "ipv6-addr--7b18f904-dbfb-5c92-8b83-c71f1832960f",
+      "url--de785076-713c-567d-ae63-b646ec3f9374",
+      "network-traffic--f28cc334-46c0-5894-8f77-a4e802089c77",
+      "process--9cb3bfaf-614d-4480-89b1-7359053c7ae5",
+      "process--cfe3ad25-0904-48c0-a062-0b9bb183d6e3",
+      "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+      "directory--325be77f-a8bf-5259-8a1d-dbf5984f0134",
+      "file--7fe91bca-bbdc-5d55-aa55-7fd2204cb2f6",
+      "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+      "artifact--ca17bcf8-9846-5ab4-8662-75c1bf6e63ee",
+      "ipv4-addr--d1f1b1e2-d0a9-5fca-bc1b-adae31c22ad3",
+      "mac-addr--c531c16b-cb43-51c7-89f4-6d01507dd6e5"
+    ]
+  },
+  {
+    "type": "sighting",
+    "spec_version": "2.1",
+    "id": "sighting--5b098c08-9215-4b7b-b268-d8d0e99c2674",
+    "created": "2023-11-18T05:26:43.58124Z",
+    "modified": "2023-11-18T05:26:43.58124Z",
+    "sighting_of_ref": "x-oca-event--f4b21ac5-da4e-4aa9-8546-500d60390d95",
+    "observed_data_refs": [
+      "observed-data--7805aca6-b29d-4e1a-86b2-ba4eb1110051"
+    ],
+    "where_sighted_refs": [
+      "x-oca-asset--77bbc76e-3318-427d-9454-06468b18d273"
+    ]
+  },
+  {
+    "type": "x-oca-event",
+    "spec_version": "2.1",
+    "id": "x-oca-event--f4b21ac5-da4e-4aa9-8546-500d60390d95",
+    "created": "2022-07-15T18:42:31.000Z",
+    "modified": "2022-07-15T18:42:31.000Z",
+    "action": "Network Connection Created",
+    "host_ref": "x-oca-asset--77bbc76e-3318-427d-9454-06468b18d273",
+    "provider": "EDR",
+    "original_ref": "artifact--ca17bcf8-9846-5ab4-8662-75c1bf6e63ee",
+    "user_ref": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+    "process_ref": "process--cfe3ad25-0904-48c0-a062-0b9bb183d6e3",
+    "network_ref": "network-traffic--f28cc334-46c0-5894-8f77-a4e802089c77",
+    "url_ref": "url--de785076-713c-567d-ae63-b646ec3f9374",
+    "domain_ref": "domain-name--bedb4899-d24b-5401-bc86-8f6b4cc18ec7"
+  },
+  {
+    "type": "x-oca-asset",
+    "spec_version": "2.1",
+    "id": "x-oca-asset--77bbc76e-3318-427d-9454-06468b18d273",
+    "created": "2022-07-15T18:42:31.000Z",
+    "modified": "2022-07-15T18:42:31.000Z",
+    "ip_refs": [
+      "ipv4-addr--d1f1b1e2-d0a9-5fca-bc1b-adae31c22ad3"
+    ],
+    "hostname": "host1.example.com",
+    "mac_refs": [
+      "mac-addr--c531c16b-cb43-51c7-89f4-6d01507dd6e5"
+    ]
+  },
+  {
+    "type": "mac-addr",
+    "spec_version": "2.1",
+    "id": "mac-addr--c531c16b-cb43-51c7-89f4-6d01507dd6e5",
+    "value": "12:34:56:78:9a:bc"
+  },
+  {
+    "type": "ipv4-addr",
+    "spec_version": "2.1",
+    "id": "ipv4-addr--d1f1b1e2-d0a9-5fca-bc1b-adae31c22ad3",
+    "value": "192.0.2.0"
+  },
+  {
+    "type": "artifact",
+    "spec_version": "2.1",
+    "id": "artifact--ca17bcf8-9846-5ab4-8662-75c1bf6e63ee",
+    "mime_type": "image/jpeg",
+    "payload_bin": "VBORw0KGgoAAAANSUhEUgAAADI== ..."
+  },
+  {
+    "type": "user-account",
+    "spec_version": "2.1",
+    "id": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+    "user_id": "S-1-2-3-4",
+    "account_login": "joe@example.com"
+  },
+  {
+    "type": "file",
+    "spec_version": "2.1",
+    "id": "file--7fe91bca-bbdc-5d55-aa55-7fd2204cb2f6",
+    "hashes": {
+      "SHA-1": "114c52257780067e3f8bfab4d2706be6debc0ace"
+    },
+    "name": "chrome.exe",
+    "parent_directory_ref": "directory--325be77f-a8bf-5259-8a1d-dbf5984f0134"
+  },
+  {
+    "type": "directory",
+    "spec_version": "2.1",
+    "id": "directory--325be77f-a8bf-5259-8a1d-dbf5984f0134",
+    "path": "C:\\Program Files\\Google\\Chrome\\Application"
+  },
+  {
+    "type": "process",
+    "spec_version": "2.1",
+    "id": "process--cfe3ad25-0904-48c0-a062-0b9bb183d6e3",
+    "pid": 14068,
+    "command_line": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --disable-features --enable-features",
+    "creator_user_ref": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+    "image_ref": "file--7fe91bca-bbdc-5d55-aa55-7fd2204cb2f6",
+    "parent_ref": "process--9cb3bfaf-614d-4480-89b1-7359053c7ae5"
+  },
+  {
+    "type": "process",
+    "spec_version": "2.1",
+    "id": "process--9cb3bfaf-614d-4480-89b1-7359053c7ae5",
+    "pid": 7116,
+    "creator_user_ref": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8"
+  },
+  {
+    "type": "network-traffic",
+    "spec_version": "2.1",
+    "id": "network-traffic--f28cc334-46c0-5894-8f77-a4e802089c77",
+    "src_ref": "ipv4-addr--d1f1b1e2-d0a9-5fca-bc1b-adae31c22ad3",
+    "dst_ref": "ipv6-addr--7b18f904-dbfb-5c92-8b83-c71f1832960f",
+    "src_port": 2041,
+    "dst_port": 443,
+    "protocols": [
+      "tcp",
+      "https"
+    ]
+  },
+  {
+    "type": "url",
+    "spec_version": "2.1",
+    "id": "url--de785076-713c-567d-ae63-b646ec3f9374",
+    "value": "https://example.com/download"
+  },
+  {
+    "type": "ipv6-addr",
+    "spec_version": "2.1",
+    "id": "ipv6-addr--7b18f904-dbfb-5c92-8b83-c71f1832960f",
+    "value": "2001:db8::"
+  },
+  {
+    "type": "domain-name",
+    "spec_version": "2.1",
+    "id": "domain-name--bedb4899-d24b-5401-bc86-8f6b4cc18ec7",
+    "value": "example.com"
+  }
+]
+
+```
+
+
+
+
+### 2-A An event indicating a file create from an endpoint
 
 A file `example.exe` has been created on the host `host1.exmaple.com` by the `chrome.exe` process.
 
@@ -279,6 +453,156 @@ A file `example.exe` has been created on the host `host1.exmaple.com` by the `ch
             }
         }
     }
+```
+
+### 2-B A Stix 2.1 SDO x-oca-event indicating a file create from an endpoint
+
+A file `example.exe` has been created on the host `host1.exmaple.com` by the `chrome.exe` process.
+
+In Stix v2.1, the Observed Data SDO gatherss any SCO's (Observables), while the Sighting SRO is used to combine these observations with appropriate SDO's, such as `x-oca-event` or `x-oca-asset`.
+
+
+```json
+[
+  {
+    "id": "observed-data--7805aca6-b29d-4e1a-86b2-ba4eb1110046",
+    "type": "observed-data",
+    "created": "2022-07-15T18:43:10.813Z",
+    "modified": "2022-07-15T18:43:10.813Z",
+    "first_observed": "2022-07-15T18:43:10.813Z",
+    "last_observed": "2022-07-15T18:43:10.813Z",
+    "number_observed": 1,
+    "object_refs": [
+      "mac-addr--c531c16b-cb43-51c7-89f4-6d01507dd6e5",
+      "ipv4-addr--d1f1b1e2-d0a9-5fca-bc1b-adae31c22ad3",
+      "artifact--ca17bcf8-9846-5ab4-8662-75c1bf6e63ee",
+      "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+      "file--7fe91bca-bbdc-5d55-aa55-7fd2204cb2f6",
+      "directory--325be77f-a8bf-5259-8a1d-dbf5984f0134",
+      "process--5f4bbeb7-a991-4057-89cf-ea8f012f5e94",
+      "process--e55d62e7-a6a2-4410-af1d-670807f2f223",
+      "file--1bd39816-c38f-5d1c-a768-0420c397b79d",
+      "directory--cde02145-c164-53f0-ab5a-681e313342e2"
+    ]
+  },
+  {
+      "type": "sighting",
+      "spec_version": "2.1",
+      "id": "sighting--d0a71341-cf9b-474f-8cdb-eba6d9e96a68",
+      "created": "2023-11-18T05:26:43.48171Z",
+      "modified": "2023-11-18T05:26:43.48171Z",
+      "sighting_of_ref": "x-oca-event--9d1ceecb-a3f4-4005-8cc9-6a6b76a35c9e",
+      "where_sighted_refs": [
+            "x-oca-asset--430f5edd-6c7e-4f59-a361-a1979887fde3"
+      ],
+      "observed_data_refs": [
+            "observed-data--7805aca6-b29d-4e1a-86b2-ba4eb1110046"
+      ]
+  },
+  {
+    "type": "x-oca-event",
+    "id": "x-oca-event--9d1ceecb-a3f4-4005-8cc9-6a6b76a35c9e",
+    "spec_version": "2.1",
+    "action": "FileCreated",
+    "created": "2022-07-15T18:43:10.813Z",
+    "modified": "2022-07-15T18:43:10.813Z",
+    "file_ref": "10",
+    "host_ref": "x-oca-asset--430f5edd-6c7e-4f59-a361-a1979887fde3",
+    "provider": "EDR",
+    "original_ref": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+    "user_ref": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+    "process_ref": "process--5f4bbeb7-a991-4057-89cf-ea8f012f5e94"
+  },
+  {
+    "type": "x-oca-asset",
+    "id": "x-oca-asset--430f5edd-6c7e-4f59-a361-a1979887fde3",
+    "spec_version": "2.1",
+    "created": "2022-07-15T18:43:10.813Z",
+    "modified": "2022-07-15T18:43:10.813Z",
+    "ip_refs": [
+      "ipv4-addr--d1f1b1e2-d0a9-5fca-bc1b-adae31c22ad3"
+    ],
+    "hostname": "host1.example.com",
+    "mac_refs": [
+      "mac-addr--c531c16b-cb43-51c7-89f4-6d01507dd6e5"
+    ]
+  },
+  {
+    "type": "mac-addr",
+    "spec_version": "2.1",
+    "id": "mac-addr--c531c16b-cb43-51c7-89f4-6d01507dd6e5",
+    "value": "12:34:56:78:9a:bc"
+  },
+  {
+    "type": "ipv4-addr",
+    "spec_version": "2.1",
+    "id": "ipv4-addr--d1f1b1e2-d0a9-5fca-bc1b-adae31c22ad3",
+    "value": "192.0.2.0"
+  },
+  {
+    "type": "artifact",
+    "spec_version": "2.1",
+    "id": "artifact--ca17bcf8-9846-5ab4-8662-75c1bf6e63ee",
+    "mime_type": "image/jpeg",
+    "payload_bin": "VBORw0KGgoAAAANSUhEUgAAADI== ..."
+  },
+  {
+    "type": "user-account",
+    "spec_version": "2.1",
+    "id": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+    "user_id": "S-1-2-3-4",
+    "account_login": "joe@example.com"
+  },
+  {
+    "type": "file",
+    "spec_version": "2.1",
+    "id": "file--7fe91bca-bbdc-5d55-aa55-7fd2204cb2f6",
+    "hashes": {
+      "SHA-1": "114c52257780067e3f8bfab4d2706be6debc0ace"
+    },
+    "name": "chrome.exe",
+    "parent_directory_ref": "directory--325be77f-a8bf-5259-8a1d-dbf5984f0134"
+  },
+  {
+    "type": "directory",
+    "spec_version": "2.1",
+    "id": "directory--325be77f-a8bf-5259-8a1d-dbf5984f0134",
+    "path": "C:\\Program Files\\Google\\Chrome\\Application"
+  },
+  {
+    "type": "process",
+    "spec_version": "2.1",
+    "id": "process--5f4bbeb7-a991-4057-89cf-ea8f012f5e94",
+    "pid": 14068,
+    "command_line": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --disable-features --enable-features",
+    "creator_user_ref": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8",
+    "image_ref": "file--7fe91bca-bbdc-5d55-aa55-7fd2204cb2f6",
+    "parent_ref": "process--e55d62e7-a6a2-4410-af1d-670807f2f223"
+  },
+  {
+    "type": "process",
+    "spec_version": "2.1",
+    "id": "process--e55d62e7-a6a2-4410-af1d-670807f2f223",
+    "pid": 7116,
+    "creator_user_ref": "user-account--1a9c7df9-1266-5a73-8d67-ceeb4f9d8fd8"
+  },
+  {
+    "type": "file",
+    "spec_version": "2.1",
+    "id": "file--1bd39816-c38f-5d1c-a768-0420c397b79d",
+    "hashes": {
+      "SHA-1": "223c52257780067e3f8bfab4d2706be6debc0aca"
+    },
+    "name": "example.exe",
+    "parent_directory_ref": "directory--cde02145-c164-53f0-ab5a-681e313342e2"
+  },
+  {
+    "type": "directory",
+    "spec_version": "2.1",
+    "id": "directory--cde02145-c164-53f0-ab5a-681e313342e2",
+    "path": "C:\\Users\\joe\\Downloads"
+  }
+]
 ```
 
 ### A named pipe event
