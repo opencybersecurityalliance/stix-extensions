@@ -12,7 +12,7 @@ The `x-oca-behavior` SDO implements this functionality.
 |--------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **type** (required)          | `string`                   | MUST be the literal "x-oca-behavior" |
 | **id** (required) | `string` | A valid [stix-id](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_64yvzeku5a5c) based on`x-ibm-behavior` |
-| **spec** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
+| **spec_version** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
 | **created** (required) | `timestamp` | The date and time the object was created |
 | **modified** (optional) | `timestamp` | The date and time the object was modified |
 | **name** (required)          | `string`                   | The name used to identify the Behavior. |
