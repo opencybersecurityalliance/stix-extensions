@@ -1,5 +1,5 @@
-## x-oca-asset object
-The `x-oca-asset` object describes an asset and its properties. 
+## x-oca-asset SCO object
+The `x-oca-asset` object is a component of telemtry that describes an asset and its properties. 
 It can be referenced to give context on events that took place on this asset.
 It describes the hostname, the associated IP addresses and physical addresses of the asset.
 In SIEM terminology which collects events from many systems - it is used to describe where the events took place.
@@ -11,9 +11,7 @@ While `x-oca-asset` specifies the host on which the associated event occurred, i
 |--|--|--|
 | **type** (required) | `string` | x-oca-asset |
 | **id** (required) | `string` | A valid [stix-id](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_64yvzeku5a5c) based on`x-ibm-ttp-tagging` |
-| **spec** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
-| **created** (required) | `timestamp` | The date and time the object was created |
-| **modified** (optional) | `timestamp` | The date and time the object was modified |
+| **spec_version** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
 | **extensions** | `dictionary` | Specifies any extensions of the object, as a dictionary. |
 | **device_id** | `string` | The ID of the device. |
 | **hostname** (required)|`string`|name of this host|

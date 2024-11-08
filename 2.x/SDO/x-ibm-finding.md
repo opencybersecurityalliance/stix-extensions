@@ -8,9 +8,9 @@ Where possible, references are made to existing STIX objects (ie. ip addresses, 
 |---------------|------|-------------|
 | **type** (required) | `string` | The value of this property must be `x-ibm-finding`. |
 | **id** (required) | `string` | A valid [stix-id](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_64yvzeku5a5c) based on`x-ibm-ttp-tagging` |
-| **spec** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
+| **spec_version** (required) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
 | **created** (required) | `timestamp` | The date and time the object was created |
-| **modified** (optional) | `timestamp` | The date and time the object was modified |
+| **modified** (required) | `timestamp` | The date and time the object was modified |
 | **finding_type** (required) | `string` | An open vocabulary that identifies the finding type. (ie. `threat`, `policy`, `violation`, `alert`.) |
 | **name** (required) | `string` | The name of the threat, policy, violation, or  alert. |
 | **alert_id** | `string` | The id of the finding from the data source |

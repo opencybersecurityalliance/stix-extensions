@@ -13,9 +13,9 @@ here.
 |--------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **type** (required)          | `string`                   | The value of this property MUST be the literal "x-oca-playbook" |
 | **id** (required) | `string` | A valid [stix-id](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_64yvzeku5a5c) based on`x-ibm-ttp-tagging` |
-| **spec_version** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
+| **spec_version** (required) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
 | **created** (required) | `timestamp` | The date and time the object was created |
-| **modified** (optional) | `timestamp` | The date and time the object was modified |
+| **modified** (required) | `timestamp` | The date and time the object was modified |
 | **playbook_id**              | `string`                   | A value that identifies the playbook. If the playbook (itself) includes an identifier, then playbook_id SHOULD use the same identifier for correlation purposes. It is recommended to use either UUIDv4 or deterministic UUIDv5 identifiers —if supported. |
 | **name** (required)          | `string`                   | The name used to identify the Playbook. |
 | **description**              | `string`                   | An explanation, details, and more context about what this playbook does and tries to accomplish. |
