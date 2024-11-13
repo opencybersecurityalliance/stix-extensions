@@ -5,7 +5,7 @@ It describes the hostname, the associated IP addresses and physical addresses of
 In SIEM terminology which collects events from many systems - it is used to describe where the events took place.
 It is referenced in the [`x-oca-event`](./x-oca-event.md) object.
 
-While `x-oca-asset` specifies the host on which the associated event occurred, it may provide extenstions to describe addtional entities of tne runtime environment. In a cloud environment the event may occur within a container that is running or a partcular pod on the host. `x-oca-asset` uses a separate extension for each addtional runtime entity. Please note that as per the STIX [2.0](http://docs.oasis-open.org/cti/stix/v2.0/cs01/part3-cyber-observable-core/stix-v2.0-cs01-part3-cyber-observable-core.html#_Toc496715388)and [2.1](https://docs.oasis-open.org/cti/stix/v2.1/csprd01/stix-v2.1-csprd01.html#_Toc16070830), COOs/SCOs can have any number of extenstions.
+While `x-oca-asset` specifies the host on which the associated event occurred, it may provide extenstions to describe addtional entities of tne runtime environnment. In a cloud environment the event may occur within a container that is running or a partcular pod on the host. `x-oca-asset` uses a separate extension for each addtional runtime entity. Please note that as per the STIX [2.0](http://docs.oasis-open.org/cti/stix/v2.0/cs01/part3-cyber-observable-core/stix-v2.0-cs01-part3-cyber-observable-core.html#_Toc496715388)and [2.1](https://docs.oasis-open.org/cti/stix/v2.1/csprd01/stix-v2.1-csprd01.html#_Toc16070830), COOs/SCOs can have any number of extenstions.
 
 | property name | type | description |
 |--|--|--|
@@ -14,7 +14,7 @@ While `x-oca-asset` specifies the host on which the associated event occurred, i
 | **spec_version** (optional) | `string` | The value of this property MUST be 2.1 for STIX Objects defined according to this specification. |
 | **extensions** | `dictionary` | Specifies any extensions of the object, as a dictionary. |
 | **device_id** | `string` | The ID of the device. |
-| **hostname** (required)|`string`|name of this host|
+| **hostname** (required)|`string`|The name of this host|
 | **ip_refs**|`list` of type `object-ref`| references the ip addresses related to this host. must be `ipv4-addr` or `ipv6-addr`|
 | **mac_refs**|`list` of type `object-ref`| references the mac addresses related to this host. must be of type `mac-addr`|
 | **os_ref**| `object-ref` | Specifies the operating system of the asset, as a reference to the Cyber-observable Object. The object referenced must be of type `software`. |
@@ -103,10 +103,10 @@ Type Name `x-oca-interface-type`
 	        "type": "x-oca-asset",
 	        "ip_refs": ["0", "2"],
 	        "hostname": "example host",
-			    "host_id": "123A",
+	        "host_id": "123A",
           "geo_ref": "5",	
-	        "mac_refs": ["3"],
-			    "host_type": "APM Server",
+          "mac_refs": ["3"],
+          "host_type": "APM Server",
           "egress":
           {
             "zone": "internal",
@@ -126,11 +126,11 @@ Type Name `x-oca-interface-type`
                   "image_name": "us.icr.io/...",
                   "container_type": "crio"
             },
-				    "x-oca-pod-ext": {
-							"name": "example pod",
-							"ip_refs": ["4"]
-						}
-			    }
+            "x-oca-pod-ext": {
+                  "name": "example pod",
+                  "ip_refs": ["4"]
+            }
+          }
 	    },
 	    "2":
 	    {
