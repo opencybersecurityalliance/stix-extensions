@@ -4,12 +4,12 @@ Adds an extension to the `course-of-action` object to include references to rela
 
 | property name | type | description |
 | -- | -- | -- |
-| extension_type (required) | `string` | The value of this property MUST be property-extension.
-| playbooks (required) | `dictionary` | The dictionary key is the UUID of a STIX 2.1 playbook object (as defined in section 2). The dictionary value is the playbook format (e.g., application/cacao+json, bpmn). When possible, this value SHOULD come from the values defined in the Template column of the IANA media type registry [Media Types]. For example, if a playbook is provided as an image in png format, the value following the IANA media type registry MUST be "image/png". Another example is CACAO security playbooks, where in [CACAO-Security-Playbooks-v2.0] Appendix C. IANA Considerations, the following media type is defined: "application/cacao+json"
+| **extension_type** (required) | `string` | The value of this property MUST be property-extension. |
+| **playbooks** (required) | `dictionary` | The dictionary key is the UUID of a STIX 2.1 playbook object (as defined in section 2). The dictionary value is the playbook format (e.g., application/cacao+json, bpmn). When possible, this value SHOULD come from the values defined in the Template column of the IANA media type registry [Media Types]. For example, if a playbook is provided as an image in png format, the value following the IANA media type registry MUST be "image/png". Another example is CACAO security playbooks, where in [CACAO-Security-Playbooks-v2.0] Appendix C. IANA Considerations, the following media type is defined: "application/cacao+json" |
 
 ## Extension Definition
 
-```
+```json
 {
     "type": "extension-definition",
     "spec_version": "2.1",
@@ -29,7 +29,7 @@ Adds an extension to the `course-of-action` object to include references to rela
 
 ### Quarantine and Remediate Course of Action with Playbook References
 
-```
+```json
 {
     "type": "course-of-action",
     "spec_version": "2.1",

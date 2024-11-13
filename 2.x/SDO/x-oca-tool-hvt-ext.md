@@ -20,14 +20,16 @@ information. The key for this extension when used in the extensions
 dictionary MUST be
 `extension-definition--fb58a27d-32d2-4b8d-9705-e3cfd2d3dcdf`.
 
-  | property name                | type                  | description                                                                                                      |
+  | **property name**                | **type**                  | **description                                                                                                      |
   |------------------------------| ----------------------| -----------------------------------------------------------------------------------------------------------------|
-  | extension_type (required)    | `string`              | MUST be the literal "property-extension"                                                                         |
-  | high_value_target_attributes | `array` of `string`   |  Array of high value target attributes. Elements SHOULD come from the open vocab high-value-target-attribute-ov. |
+  | **extension_type** (required)    | `string`              | MUST be the literal "property-extension"                                                                         |
+  | **high_value_target_attributes** | `array` of `string`   |  Array of high value target attributes. Elements SHOULD come from the open vocab high-value-target-attribute-ov. |
 
 ### Tool Type Open Vocabulary Additions
 
-The tool-type-ov describes categories of tools that can be used to
+Vocab Name `tool-type-ov`
+
+The `tool-type-ov` describes categories of tools that can be used to
 perform attacks. The following additional values are added to
 tool-type-ov.
 
@@ -48,7 +50,10 @@ tool-type-ov.
 
 ### High Value Target Attribute Open Vocabulary
 
-The high-value-target-attribute-ov open vocabulary describes attributes
+Vocab Name `high-value-target-attribute-ov`
+
+
+The `high-value-target-attribute-ov` open vocabulary describes attributes
 of high value target tools when weaponized by an adversary.
 
   | value                | description                                                                                                                                       |
@@ -60,7 +65,7 @@ of high value target tools when weaponized by an adversary.
   | external-exposure    | The adversary leverages external network exposure to pivot from untrusted to trusted networks.                                                    |
   | infiltrate-comms     | The adversary leverages functionality that enables defenders to communicate (in-band or out-of-band) and gains visibility into defensive tactics. |
   | blindside-defense    | The adversary leverages functionality that directly targets and impairs the defender's investigative and detective capabilities.                  |
-  | inhibit-restoration  | The adversary leverages functionality that can permanently damage backup and restore capabilities.                                                |
+  | inhibit-restoration  | The adversary leverages functionality that can permanently damage backup and restore capabilities.                                            |
   | stores-data          | The adversary leverages functionality that allows access to highly valuable or large amount of data.                                              |
   | widespread-presence  | The adversary leverages widely implemented and inherently trusted tools to maximize their presence and impact.                                    |
  
