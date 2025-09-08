@@ -18,11 +18,11 @@ Adds an extension to the network-traffic object to contain RITA beacon informati
   "id": "extension-definition--3b7505ce-2a18-496e-aa58-311dac6c1473",
   "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
   "created": "2022-03-31T13:00:00.000Z",
-  "modified": "2022-03-31T13:00:00.000Z",
+  "modified": "2025-06-18T12:00:00.000Z",
   "name": "x-oca-network-traffic Extension Definition",
-  "description": "This schema extends the Network Traffic SCO with beacon scoring information from Real Intelligence Threat Analytics (RITA).",
-  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/observables/extended-network-traffic.json",
-  "version": "1.0.0",
+  "description": "This extended network traffic object contains fields from Real Intelligence Threat Analytics (RITA) for additional context regarding beaconing likelihood.",
+  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/extended-network-traffic.json",
+  "version": "1.0.1",
   "extension_types": [
     "property-extension"
   ]

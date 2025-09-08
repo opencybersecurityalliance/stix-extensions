@@ -21,11 +21,11 @@ Adds an extension to the windows-registry-key object to include references to re
   "id": "extension-definition--2cf8c8c2-69f5-40f7-aa34-efcef2b912b1",
   "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
   "created": "2022-03-31T13:00:00.000Z",
-  "modified": "2022-03-31T13:00:00.000Z",
+  "modified": "2025-06-18T12:00:00.000Z",
   "name": "x-oca-windows-registry-key Extension Definition",
-  "description": "This schema extends the Windows Registry Key SCO.",
-  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/observables/extended-windows-registry-key.json",
-  "version": "1.0.0",
+  "description": "This extended Windows registry key object contains fields from Windows Security Event 4657 (registry value modified) for additional context.",
+  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/extended-windows-registry-key.json",
+  "version": "1.0.1",
   "extension_types": [
     "property-extension"
   ]
