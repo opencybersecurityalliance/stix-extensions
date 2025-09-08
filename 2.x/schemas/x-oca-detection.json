@@ -26,12 +26,9 @@
           "type": "string",
           "description": "The name used to identify the detection."
         },
-        "data_sources": {
-          "type": "array",
-          "description": "Information about the data event that the detection targets.",
-          "items": {
-              "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/dictionary.json"
-          }
+        "description": {
+          "type": "string",
+          "description": "Information about the data event that the detection targets."
         },
         "analytic": {
           "type": "object",
@@ -54,7 +51,6 @@
   ],
   "required": [
     "name",
-    "data_sources",
     "analytic"
   ]
 }
