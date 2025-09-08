@@ -1,0 +1,15 @@
+{
+  "type": "extension-definition",
+  "spec_version": "2.1",
+  "id": "extension-definition--8ba332c2-8e4f-4ad4-b866-6d3cf6184f58",
+  "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+  "created": "2022-03-31T13:00:00.000Z",
+  "modified": "2022-03-31T13:00:00.000Z",
+  "name": "x-oca-asset Extension Definition",
+  "description": "This schema creates a new object type called x-oca-asset.",
+  "schema": "TBD",
+  "version": "1.0.0",
+  "extension_types": [
+    "new-sdo"
+  ]
+}

@@ -20,11 +20,11 @@ Adds an extension to the process object to include references to related playboo
   "id": "extension-definition--f9dbe89c-0030-4a9d-8b78-0dcd0a0de874",
   "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
   "created": "2022-03-31T13:00:00.000Z",
-  "modified": "2022-03-31T13:00:00.000Z",
+  "modified": "2025-06-18T12:00:00.000Z",
   "name": "x-oca-process Extension Definition",
-  "description": "This schema extends the Process SCO with additional Windows Event Log fields.",
-  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/observables/extended-process.json",
-  "version": "1.0.0",
+  "description": "This extended process object contains fields from Windows Security Event 4688 (new process created) for additional context.",
+  "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/extended-process.json",
+  "version": "1.0.1",
   "extension_types": [
     "property-extension"
   ]
