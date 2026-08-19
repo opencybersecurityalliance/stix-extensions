@@ -26,3 +26,5 @@ IOB uses the following extensions (links to their schemas are provided):
     - [Documentation Link](../../2.x/SCO/windows-registry-key-ext.md)
 -   [x-oca-tool-hvt-ext](../../2.x/schemas/x-oca-tool-hvt-ext.json)
     - [Documentation Link](../../2.x/SDO/x-oca-tool-hvt-ext.md)
+
+IOB also utilizes the playbook extension that is available [here](https://github.com/opencybersecurityalliance/stix-extensions/tree/main/contexts/playbook) 
